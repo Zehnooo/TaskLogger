@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Productivity Logger</h1>
+
+      <form id="task-form">
+        <label for="task-name">Task Name</label>
+        <input
+          type="text"
+          id="task-name"
+          placeholder="Enter task name"
+          class="task-input"
+          required
+        />
+        <br />
+        <label for="task-desc">Task Description</label>
+        <input
+          type="text"
+          id="task-desc"
+          placeholder="Enter task description"
+          class="task-input"
+          required
+        />
+        <br />
+        <label for="department">Department</label>
+        <select name="department" id="task-department" class="task-input">
+          <option value="Graphics">Graphics</option>
+          <option value="Sales">Sales</option>
+          <option value="Accounting">Accounting</option>
+          <option value="Operations">Operations</option>
+        </select>
+        <br />
+        <label for="task-category">Category</label>
+        <select
+          name="category"
+          id="task-category"
+          class="task-input"
+          onchange="customInputShow()"
+        >
+          <option value="Email Response">Email Reply</option>
+          <option value="Search/Report">Search/Report</option>
+          <option value="Script">Script</option>
+          <option value="Error/Issue">Error/Issue</option>
+          <option value="Enter Transaction">Enter Transaction</option>
+          <option value="Custom Request" id="custom-selection">
+            Custom Request
+          </option>
+        </select>
+        <input type="text" id="custom-request" class="hidden task-input" />
+        <button type="submit">Start Task</button>
+      </form>
+
+      <div id="active-task" class="hidden">
+        <p>
+          <strong>Current Task:</strong> <span id="current-task-name"></span>
+        </p>
+        <p><strong>Elapsed Time:</strong> <span id="timer">00:00:00</span></p>
+        <button id="stop-task">Stop Task</button>
+      </div>
+
+      <h2>Task Log</h2>
+      <ul id="task-log"></ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
