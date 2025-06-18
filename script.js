@@ -103,7 +103,7 @@ form.addEventListener('submit', function (e) {
     }
     }
     
-    
+    form.style.display = 'none';
     activeTaskContainer.classList.remove('hidden');
     startBtn.classList.add('hidden');
     timer = true;
@@ -173,6 +173,7 @@ stopButton.addEventListener('click', function () {
     allTasks.push(taskData);
     saveAllTasks();
     
+    form.style.display = '';
     otherInput.style.display = 'none';
     activeTaskContainer.classList.add('hidden');
     startBtn.classList.remove('hidden');
