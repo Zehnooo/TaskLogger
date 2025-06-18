@@ -74,6 +74,7 @@ let clearButton = document.getElementById('delete-tasks');
 let activeTaskContainer = document.getElementById('active-task');
 let activeTaskElement = document.getElementById('current-task-name');
 let taskLog = document.getElementById('task-log');
+let taskLogTitle = document.getElementById('task-log-title');
 let elapsedTime = document.getElementById('task-time');
 // END grab elements
 
@@ -141,16 +142,20 @@ stopButton.addEventListener('click', function () {
 
    if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
-            "<span class='date-time'>" + currentDate + ' ' + currentTime + "</span><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
-            "<span class='listTitle'> Desc: </span><span class='listVar'>" + taskDesc + "</span>" +
-            "<span class='listTitle'> Dept: </span><span class='listVar'>" + taskDepartment + "</span>" +
-            "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskLength;
+            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
+            "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
         newTask.innerHTML = 
-            "<span class='date-time'>" + currentDate + ' ' + currentTime + "</span><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
-            "<span class='listTitle'> Desc: </span><span class='listVar'>" + taskDesc + "</span>" +
-            "<span class='listTitle'> Dept: </span><span class='listVar'>" + taskDepartment + "</span>" +
-            "<span class='listTitle'> Category: </span><span class='listVar'>" + taskCategory + "</span></span><span class='listTitle'>Time Spent</span><span class='listVar'>"+ taskLength;
+             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
+            "<span class='listTitle'> Category: </span><span class='listVar'>" + taskCategory + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     }
     // Reset Stopwatch
     hour = 0;
@@ -177,6 +182,7 @@ stopButton.addEventListener('click', function () {
     otherInput.style.display = 'none';
     activeTaskContainer.classList.add('hidden');
     startBtn.classList.remove('hidden');
+    hideLogElements();
 });
 // END 'Stop' Stop Task Button
 
@@ -188,6 +194,7 @@ function saveAllTasks(){
 
 // BEGIN Load Tasks
 function loadAllTasks() {
+    allTasks = [];
     const stored = localStorage.getItem("tasks");
     if (stored) {
         allTasks = JSON.parse(stored); 
@@ -198,21 +205,22 @@ function loadAllTasks() {
 
             if (taskData.other) {
                 newTask.innerHTML = 
-                    "<span class='date-time'>" + taskData.date + ' ' + taskData.time + "</span><span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
-                    " <span class='listTitle'>Desc:</span> <span class='listVar'>" + taskData.desc + "</span>" +
-                    " <span class='listTitle'>Dept:</span> <span class='listVar'>" + taskData.department + "</span>" +
-                    " <span class='listTitle'>Category:</span> <span class='listVar'>" + taskData.other + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskData.length;
+                    "<div class='date-time'><span>" + taskData.date + "</span>" + '|' + "<span>" + taskData.time +  "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                    "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
+                    "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
+                    "</span><span class='listTitle'> Category (Other): </span><span class='listVar'>" + taskData.other + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             } else {
                 newTask.innerHTML = 
-                    "<span class='date-time'>" + taskData.date + ' ' + taskData.time + "</span><span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
-                    " <span class='listTitle'>Desc:</span> <span class='listVar'>" + taskData.desc + "</span>" +
-                    " <span class='listTitle'>Dept:</span> <span class='listVar'>" + taskData.department + "</span>" +
-                    " <span class='listTitle'>Category:</span> <span class='listVar'>" + taskData.category + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskData.length;
+                   "<div class='date-time'><span>" + taskData.date + "</span>" + '|' + "<span>" + taskData.time +  "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                    "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
+                    "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
+                    "</span><span class='listTitle'> Category: </span><span class='listVar'>" + taskData.category + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             }
 
             taskLog.appendChild(newTask);
         });
     }
+    hideLogElements();
 }
 
 loadAllTasks();
@@ -220,12 +228,24 @@ loadAllTasks();
 
 // BEGIN Delete Tasks
 function deleteTasks(){
-    let allTasks = [];
+    allTasks = [];
     localStorage.removeItem("tasks");
     taskLog.innerHTML = "";
 }
+
 clearButton.addEventListener('click', function(){
 deleteTasks();
 loadAllTasks();
+hideLogElements();
 });
 // END Delete Tasks
+function hideLogElements(){
+if (allTasks.length === 0 ){
+    clearButton.style.display = 'none';
+    taskLogTitle.style.display = 'none';
+} else { 
+    clearButton.style.display = '';
+    taskLogTitle.style.display = '';
+}
+}
+

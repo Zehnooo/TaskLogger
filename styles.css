@@ -52,9 +52,6 @@ table {
 /* CSS RESET END */
 
 /* BEGIN STYLING */
-* {
-	border: solid 2px red;
-}
 html {
     padding:50px;
 }
@@ -150,40 +147,57 @@ select:focus {
 }
 
 #task-form button {
-  background-color: #0073aa;
+  background-color: #239b56;
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 #task-form button:hover {
-  background-color: #005e8c;
+  background-color: #186a3b;
 }
 
 .listTitle {
   color: limegreen;
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 4px;
 }
 
 .listVar {
-	color: snow;
+	color: #eee;
 }
 
 .task-item {
   background-color: #1c1c1c;
   color: #eee;
-  padding: 15px;
+  padding: 15px 20px;
   border-radius: 10px;
-  margin: 10px 0;
+  margin-bottom:15px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap:10px;
 }
 .date-time {
 	color:yellow;
+  font-weight: bold;
+  margin-bottom:5px;
+  padding: 10px;
+  display:flex;
+  gap:20px;
 }
+.top-line, .bot-line, .time-spent, .date-time {
+  text-align: center;
+  line-height: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding:5px;
+}
+.top-line, .bot-line, .time-spent {
+  gap: 10px 20px;
+  display: flex;
+}
+
+
 #active-task {
   background-color: #eee;
   padding: 15px;
@@ -228,6 +242,10 @@ select:focus {
 }
 #delete-tasks:hover {
   background-color: #700;
+}
+hr {
+  color: snow;
+  width: 90%;
 }
 
 /* END STYLING */
