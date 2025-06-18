@@ -196,32 +196,3 @@ deleteTasks();
 loadAllTasks();
 });
 // END Delete Tasks
-
-
-
-
-
-// END Timer Functions
-/*
-var btstart = document.querySelector('#submit');
-var btstop = document.querySelector('#stop-task');
-var minDigits = document.getElementById("min");
-var secDigits = document.getElementById("sec");
-var hrs = 0;
-var mins = 0;
-var secs = 0;
-var countSec = 0;
-var timerVar = null;
-
-function startCounter () {
-    ++countSec;
-
-    hrs = Math.floor(countSec /3600);
-    mins = Math.floor((countSec - hrs*3600)/60);
-    secs = countSec - (hrs*3600 + mins*60);
-
-}
-
-console.log ({hrs, mins, secs});
-*/
-
