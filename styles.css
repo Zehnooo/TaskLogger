@@ -59,4 +59,24 @@ html {
 .hidden {
     display: none;
 }
+
+.listTitle {
+	color:lime;
+	font-weight: bolder;
+	font-size: 18px;
+	padding: 8px;
+}
+.listVar {
+	color: snow;
+}
+.task-item {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: black;
+	height: 75px;
+	width: auto;
+	display:flex;
+	margin: 10px;
+}
 /* END STYLING */

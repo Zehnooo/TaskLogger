@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h1>Productivity Logger</h1>
-
+      <button id="delete-tasks">Delete All Tasks</button>
       <form id="task-form">
         <label for="task-name">Task Name</label>
         <input
@@ -58,15 +58,14 @@
       </form>
 
       <div id="active-task" class="hidden">
-        <p>
-          <strong>Current Task:</strong> <span id="current-task-name"></span>
-        </p>
-        <p><strong>Elapsed Time:</strong> <span id="timer">00:00:00</span></p>
+        <p><strong>Elapsed Time:</strong> <div id="task-time"><span id="hr" class="hours">00</span>:<span id="min" class="minutes">00</span>:<span id="sec" class="seconds">00</span>:<span id="count" class="msec">00</span></div></p>
         <button id="stop-task">Stop Task</button>
       </div>
 
       <h2>Task Log</h2>
       <ul id="task-log"></ul>
+    
+
     </div>
 
     <script src="script.js"></script>
