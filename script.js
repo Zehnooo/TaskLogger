@@ -60,12 +60,12 @@ function stopWatch(){
 // END Timer Functions
 
 // BEGIN form inputs
-let customRequest = document.getElementById('custom-request');
 let taskNameInput = document.getElementById('task-name');
 let taskDescInput = document.getElementById('task-desc');
 let taskDepartmentInput = document.getElementById('task-department');
 let selectedCategoryInput = document.getElementById('task-category');
-let customRequestInput = document.getElementById('custom-request');
+let otherInput = document.getElementById('other-input');
+let startBtn = document.getElementById('start-btn');
 let stopButton = document.getElementById('stop-task');
 let clearButton = document.getElementById('delete-tasks');
 // END inputs
@@ -80,10 +80,10 @@ let elapsedTime = document.getElementById('task-time');
 // BEGIN custom request function
 function customInputShow(){
 console.log(selectedCategoryInput.value);
-if (selectedCategoryInput.value === "Custom Request"){
-customRequest.style.display = 'flex';
+if (selectedCategoryInput.value === "Other"){
+otherInput.style.display = 'flex';
 } else {
-    customRequest.style.display = 'none';
+    otherInput.style.display = 'none';
 }
 }
 // END custom request function
@@ -91,8 +91,21 @@ customRequest.style.display = 'flex';
 // BEGIN 'Submit' Start Task Button
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-    activeTaskContainer.classList.remove('hidden');
 
+    if (taskDepartmentInput.value === "default" || selectedCategoryInput.value === "default"){
+    alert("Department and/or Category cannot be empty. Please try again.");
+    return;
+}
+    if (selectedCategoryInput.value === "Other"){
+         if (otherInput.value.trim() === ""){
+        alert("Other category cannot be empty. Please try again.");
+        return;
+    }
+    }
+    
+    
+    activeTaskContainer.classList.remove('hidden');
+    startBtn.classList.add('hidden');
     timer = true;
     stopWatch();
 });
@@ -106,44 +119,63 @@ stopButton.addEventListener('click', function () {
     let taskDesc = taskDescInput.value.trim();
     let taskDepartment = taskDepartmentInput.value.trim();
     let taskCategory = selectedCategoryInput.value.trim();
-    let taskCustomRequest = customRequestInput.value.trim();
+    let otherOption = otherInput.value.trim();
+
     const now = new Date();
-    console.log(now);
+    const currentDate = now.toLocaleDateString();
+    const currentTime = now.toLocaleTimeString();
 
     let taskData = {
         name: taskName,
         desc: taskDesc,
         department: taskDepartment,
         category: taskCategory,
-        customRequest: taskCustomRequest,
-        length: taskLength
+        other: otherOption,
+        length: taskLength,
+        date: currentDate,
+        time: currentTime
     };
 
     var newTask = document.createElement('li');
     newTask.classList.add('task-item');
 
-    if (taskCustomRequest) {
+   if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
-            "<span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='date-time'>" + currentDate + ' ' + currentTime + "</span><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Desc: </span><span class='listVar'>" + taskDesc + "</span>" +
             "<span class='listTitle'> Dept: </span><span class='listVar'>" + taskDepartment + "</span>" +
-            "<span class='listTitle'> Category: </span><span class='listVar'>" + taskCustomRequest + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskLength;
+            "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskLength;
     } else {
         newTask.innerHTML = 
-            "<span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='date-time'>" + currentDate + ' ' + currentTime + "</span><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Desc: </span><span class='listVar'>" + taskDesc + "</span>" +
             "<span class='listTitle'> Dept: </span><span class='listVar'>" + taskDepartment + "</span>" +
             "<span class='listTitle'> Category: </span><span class='listVar'>" + taskCategory + "</span></span><span class='listTitle'>Time Spent</span><span class='listVar'>"+ taskLength;
     }
-    
+    // Reset Stopwatch
+    hour = 0;
+    minute = 0;
+    second = 0;
+    count = 0;
+    // Reset Elapsed time 
     document.getElementById('hr').innerHTML = '00';
     document.getElementById('min').innerHTML = '00';
     document.getElementById('sec').innerHTML = '00';
     document.getElementById('count').innerHTML = '00';
 
-    taskLog.appendChild(newTask);
+    taskNameInput.value = "";
+    taskDescInput.value = "";
+    taskDepartmentInput.selectedIndex = 0;
+    selectedCategoryInput.selectedIndex = 0;
+    otherInput.value = "";
+
+    taskLog.prepend(newTask);
     allTasks.push(taskData);
     saveAllTasks();
+    
+    otherInput.style.display = 'none';
+    activeTaskContainer.classList.add('hidden');
+    startBtn.classList.remove('hidden');
 });
 // END 'Stop' Stop Task Button
 
@@ -163,15 +195,15 @@ function loadAllTasks() {
             var newTask = document.createElement('li');
             newTask.classList.add('task-item');
 
-            if (taskData.customRequest) {
+            if (taskData.other) {
                 newTask.innerHTML = 
-                    "<span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
+                    "<span class='date-time'>" + taskData.date + ' ' + taskData.time + "</span><span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
                     " <span class='listTitle'>Desc:</span> <span class='listVar'>" + taskData.desc + "</span>" +
                     " <span class='listTitle'>Dept:</span> <span class='listVar'>" + taskData.department + "</span>" +
-                    " <span class='listTitle'>Category:</span> <span class='listVar'>" + taskData.customRequest + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskData.length;
+                    " <span class='listTitle'>Category:</span> <span class='listVar'>" + taskData.other + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskData.length;
             } else {
                 newTask.innerHTML = 
-                    "<span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
+                    "<span class='date-time'>" + taskData.date + ' ' + taskData.time + "</span><span class='listTitle'>Task:</span> <span class='listVar'>" + taskData.name + "</span>" +
                     " <span class='listTitle'>Desc:</span> <span class='listVar'>" + taskData.desc + "</span>" +
                     " <span class='listTitle'>Dept:</span> <span class='listVar'>" + taskData.department + "</span>" +
                     " <span class='listTitle'>Category:</span> <span class='listVar'>" + taskData.category + "</span><span class='listTitle'>Time Spent</span><span class='listVar'>" + taskData.length;

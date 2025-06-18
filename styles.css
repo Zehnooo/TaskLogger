@@ -52,31 +52,182 @@ table {
 /* CSS RESET END */
 
 /* BEGIN STYLING */
+* {
+	border: solid 2px red;
+}
 html {
     padding:50px;
+}
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background: #f9f9f9;
+	color:#222;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px;
+}
+.container {
+  width: 100%;
+  max-width: 1000px;
+}
+h1 {
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	font-size: 2.5rem;
+  	margin: 20px;
 }
 
 .hidden {
     display: none;
 }
 
-.listTitle {
-	color:lime;
-	font-weight: bolder;
-	font-size: 18px;
-	padding: 8px;
+#task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.form-group label {
+  flex: 0 0 150px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-actions {
+    text-align: center;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  padding: 10px 20px;
+  background-color: #0073aa;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  height:200px;
+  width: 200px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom:20px;
+}
+
+.form-actions button:hover {
+  background-color: #005e8c;
+}
+
+.task-input,
+#task-form select,
+#task-form input,
+#task-form button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #0073aa;
+  box-shadow: 0 0 0 2px #99ccee;
+}
+
+#task-form button {
+  background-color: #0073aa;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#task-form button:hover {
+  background-color: #005e8c;
+}
+
+.listTitle {
+  color: limegreen;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
 .listVar {
 	color: snow;
 }
+
 .task-item {
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	background-color: black;
-	height: 75px;
-	width: auto;
-	display:flex;
-	margin: 10px;
+  background-color: #1c1c1c;
+  color: #eee;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
+.date-time {
+	color:yellow;
+}
+#active-task {
+  background-color: #eee;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 275px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; 
+}
+#stop-task {
+  margin-top: 10px;
+  padding: 10px 20px;
+  height:200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: crimson;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+#stop-task:hover {
+  background-color: darkred;
+}
+
+#task-log {
+  width: 100%;
+}
+
+#delete-tasks {
+  margin-top: 20px;
+  background-color: #900;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#delete-tasks:hover {
+  background-color: #700;
+}
+
 /* END STYLING */

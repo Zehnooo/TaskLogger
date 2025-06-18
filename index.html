@@ -8,53 +8,69 @@
   </head>
   <body>
     <div class="container">
-      <h1>Productivity Logger</h1>
-      <button id="delete-tasks">Delete All Tasks</button>
+      <h1>Task Logger</h1>
+      
       <form id="task-form">
-        <label for="task-name">Task Name</label>
-        <input
-          type="text"
-          id="task-name"
-          placeholder="Enter task name"
-          class="task-input"
-          required
-        />
-        <br />
-        <label for="task-desc">Task Description</label>
-        <input
-          type="text"
-          id="task-desc"
-          placeholder="Enter task description"
-          class="task-input"
-          required
-        />
-        <br />
-        <label for="department">Department</label>
-        <select name="department" id="task-department" class="task-input">
-          <option value="Graphics">Graphics</option>
-          <option value="Sales">Sales</option>
-          <option value="Accounting">Accounting</option>
-          <option value="Operations">Operations</option>
-        </select>
-        <br />
-        <label for="task-category">Category</label>
+
+      <div class="form-group">
+          <label for="task-name">Task</label>
+                  <input
+                    type="text"
+                    id="task-name"
+                    placeholder="Enter task name"
+                    class="task-input"
+                    required
+                  />
+      </div>
+        
+      <div class="form-group">
+          <label for="task-desc">Description</label>
+                  <input
+                    type="text"
+                    id="task-desc"
+                    placeholder="Enter task description"
+                    class="task-input"
+                    required
+                  />
+      </div>
+      
+      <div class="form-group">
+           <label for="task-department">Department</label>
+                <select name="department" id="task-department" class="task-input">
+                  <option value="default"></option>
+                  <option value="Graphics">Graphics</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Accounting">Accounting</option>
+                  <option value="Operations">Operations</option>
+                </select>
+      </div>
+     
+       
+      <div class="form-group">
+         <label for="task-category">Category</label>
         <select
           name="category"
           id="task-category"
           class="task-input"
           onchange="customInputShow()"
         >
+          <option value="default"></option>
           <option value="Email Response">Email Reply</option>
           <option value="Search/Report">Search/Report</option>
           <option value="Script">Script</option>
           <option value="Error/Issue">Error/Issue</option>
           <option value="Enter Transaction">Enter Transaction</option>
-          <option value="Custom Request" id="custom-selection">
-            Custom Request
+          <option value="Other" id="other">
+            Other
           </option>
         </select>
-        <input type="text" id="custom-request" class="hidden task-input" />
-        <button type="submit">Start Task</button>
+      </div>
+       
+        <input type="text" id="other-input" class="hidden task-input" />
+        <div class="form-actions">
+          <button type="submit" id="start-btn">Start Task</button>
+        </div>
+       
       </form>
 
       <div id="active-task" class="hidden">
@@ -62,11 +78,12 @@
         <button id="stop-task">Stop Task</button>
       </div>
 
-      <h2>Task Log</h2>
+      <h1>Task Log</h1>
       <ul id="task-log"></ul>
     
 
     </div>
+    <button id="delete-tasks">Delete All Tasks</button>
 
     <script src="script.js"></script>
   </body>
