@@ -240,6 +240,8 @@ loadAllTasks();
 hideLogElements();
 });
 // END Delete Tasks
+
+// BEGIN Hide Elements
 function hideLogElements(){
 if (allTasks.length === 0 ){
     exportBtn.style.display = 'none';
@@ -251,4 +253,33 @@ if (allTasks.length === 0 ){
     taskLogTitle.style.display = '';
 }
 }
+// END Hide ELements
 
+// BEGIN CSV Export
+exportBtn.addEventListener("click", exportTasks);
+function exportTasks(){
+    let csvContent = "data:text/csv;charset=utf-8,";
+
+    csvContent += "Date,Time,Task,Description,Department,Category,Time Spent\n";
+
+    allTasks.forEach(taskData => {
+        const row = [
+            taskData.date,
+            taskData.time,
+            taskData.name,
+            taskData.desc,
+            taskData.department,
+            taskData.category,
+            taskData.length
+        ].join(",");
+
+        csvContent += row + "\n";
+    });
+    const contentReady = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", contentReady);
+    link.setAttribute("download","tasklog.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
