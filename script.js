@@ -68,6 +68,7 @@ let otherInput = document.getElementById('other-input');
 let startBtn = document.getElementById('start-btn');
 let stopButton = document.getElementById('stop-task');
 let clearButton = document.getElementById('delete-tasks');
+let exportBtn = document.getElementById('export-tasks');
 // END inputs
 
 // BEGIN grab elements
@@ -241,9 +242,11 @@ hideLogElements();
 // END Delete Tasks
 function hideLogElements(){
 if (allTasks.length === 0 ){
+    exportBtn.style.display = 'none';
     clearButton.style.display = 'none';
     taskLogTitle.style.display = 'none';
-} else { 
+} else {
+    exportBtn.style.display = ''; 
     clearButton.style.display = '';
     taskLogTitle.style.display = '';
 }

@@ -250,4 +250,39 @@ hr {
   width: 90%;
 }
 
+#export-tasks {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#export-tasks:hover {
+  background-color: #d5d5d5;
+  transform: scale(1.05);
+}
+
+#export-tasks:active {
+  transform: scale(0.97);
+}
+
+#export-tasks:focus {
+  outline: 2px solid #444;
+  outline-offset: 2px;
+}
+
+#export-tasks svg {
+  width: 28px;
+  height: 28px;
+  fill: #1a1a1a;                         
+  pointer-events: none;
+}
 /* END STYLING */
