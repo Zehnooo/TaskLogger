@@ -324,6 +324,10 @@ manualTimeSpent.classList.toggle('hidden');
 manualTimeSpentLabel.classList.toggle('hidden');
 
 manualSubmitBtn.classList.toggle('hidden');
+
+manualDate.value = "";
+manualTime.value = "";
+manualTimeSpent.value = "";
 }
 
 function manualSubmission(){
