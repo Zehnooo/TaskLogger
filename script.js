@@ -166,7 +166,7 @@ stopButton.addEventListener('click', function () {
 
    if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
-            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><div>" + refreshBtn + "<hr>" +
+            "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><div>" + "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -174,7 +174,7 @@ stopButton.addEventListener('click', function () {
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
         newTask.innerHTML = 
-             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><div>" + refreshBtn + "<hr>" +
+             "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><div>" +  "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -198,6 +198,8 @@ stopButton.addEventListener('click', function () {
     selectedCategoryInput.selectedIndex = 0;
     otherInput.value = "";
 
+    newTask.querySelector('.date-time')
+    .appendChild(createRefreshBtn(taskData.id));
     taskLog.prepend(newTask);
     allTasks.push(taskData);
     saveAllTasks();
@@ -230,18 +232,19 @@ function loadAllTasks() {
 
             if (taskData.other) {
                 newTask.innerHTML = 
-                    "<div class='date-time'><span>" + taskData.date + "</span>" + '|' + "<span>" + taskData.time +  "</span>" + refreshBtn + "</div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                    "<div class='date-time'><span>" + taskData.date + "</span>" +  "<span>" + taskData.time +  "</span>" + "</div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
                     "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
                     "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
                     "</span><span class='listTitle'> Category (Other): </span><span class='listVar'>" + taskData.other + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             } else {
                 newTask.innerHTML = 
-                   "<div class='date-time'><span>" + taskData.date + "</span>" + '|' + "<span>" + taskData.time +  "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                   "<div class='date-time'><span>" + taskData.date + "</span>" +  "<span>" + taskData.time +  "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
                     "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
                     "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
                     "</span><span class='listTitle'> Category: </span><span class='listVar'>" + taskData.category + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             }
-
+            newTask.querySelector('.date-time')
+            .appendChild(createRefreshBtn(taskData.id));
             taskLog.prepend(newTask);
         });
     }
@@ -386,7 +389,7 @@ newTask.classList.add('task-item');
 
 if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
-            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -394,7 +397,7 @@ if (taskCategory === "Other" && otherOption.length > 0) {
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
         newTask.innerHTML = 
-             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+             "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -410,6 +413,9 @@ otherInput.value = "";
 manualDate.value = "";
 manualTime.value = "";
 manualTimeSpent.value = "";
+
+newTask.querySelector('.date-time')
+.appendChild(createRefreshBtn(taskData.id));
 
 taskLog.prepend(newTask);
 allTasks.push(taskData);
@@ -439,3 +445,26 @@ hideLogElements();
 manualBtn.addEventListener("click", manualEntryForm);
 manualSubmitBtn.addEventListener("click", manualSubmission);
 // END Manual Entry
+
+function createRefreshBtn(taskId) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'refresh-btn';
+    btn.dataset.taskId = taskId;
+
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.06 13c-.04-.33-.06-.66-.06-1
+               0-4.42 3.58-8 8-8
+               2.5 0 4.73 1.15 6.2 2.94
+               M19.94 11c.04.33.06.66.06 1
+               0 4.42-3.58 8-8 8
+               -2.39 0-4.53-.95-6-2.71
+               M9 17H6
+               M18.2 4v3
+               M6 20v-3"
+            stroke="#fff" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+    return btn;
+}

@@ -175,6 +175,9 @@ select:focus {
   padding: 10px;
   display:flex;
   gap:20px;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
 }
 .top-line, .bot-line, .time-spent, .date-time {
   text-align: center;
@@ -188,9 +191,11 @@ select:focus {
   display: flex;
 }
 
-#refresh-btn {
-  height:24px;
-  width:24px;
+.refresh-btn {
+  height:36px;
+  width:36px;
+  background-color: transparent;
+  border: none;
 }
 
 #active-task {
