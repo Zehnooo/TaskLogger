@@ -70,6 +70,9 @@ let stopButton = document.getElementById('stop-task');
 let clearButton = document.getElementById('delete-tasks');
 let exportBtn = document.getElementById('export-tasks');
 let manualBtn = document.getElementById('manual-entry');
+let manualDate = document.getElementById('manual-date');
+let manualTime = document.getElementById('manual-time');
+let manualTimeSpent = document.getElementById('manual-time-spent');
 // END inputs
 
 // BEGIN grab elements
@@ -78,7 +81,7 @@ let activeTaskElement = document.getElementById('active-task-name');
 let taskLog = document.getElementById('task-log');
 let taskLogTitle = document.getElementById('task-log-title');
 let elapsedTime = document.getElementById('task-time');
-
+let logCover = document.getElementById('log-cover');
 // END grab elements
 
 // BEGIN custom request function
@@ -286,3 +289,17 @@ function exportTasks(){
     link.click();
     document.body.removeChild(link);
 }
+// END CSV Export
+
+// BEGIN Manual Entry
+manualBtn.addEventListener("click", function(){
+startBtn.classList.add('hidden');
+
+manualDate.classList.remove('hidden');
+manualTime.classList.remove('hidden');
+manualTimeSpent.classList.remove('hidden');
+
+const submitBtn = document.createElement("button");
+submitBtn.textContent = 'Submit';
+document.body.appendChild(submitBtn);
+});

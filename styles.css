@@ -63,9 +63,12 @@ body {
 	flex-direction: column;
 	align-items: center;
 	padding: 40px;
+  margin:0 auto;
+  width:100%;
 }
 .container {
   width: 100%;
+  min-width: 500px;
   max-width: 1000px;
 }
 h1 {
@@ -102,7 +105,7 @@ h1 {
 
 .form-group input,
 .form-group select,
-#other-input {
+#other-input, .task-input {
   flex: 1;
   padding: 10px;
   font-size: 16px;
@@ -229,21 +232,55 @@ select:focus {
   background-color: darkred;
 }
 
+.log-buttons {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
 #task-log {
   width: 100%;
 }
+.icon-btn {
+  width: 60px;
+  height: 60px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 0; /* Remove padding so SVG fills the box evenly */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon-btn:hover {
+  background-color: #d5d5d5;
+  transform: scale(1.05);
+}
+
+.icon-btn:active {
+  transform: scale(0.97);
+}
+
+.icon-btn svg {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  display: block;
+}
 
 #delete-tasks {
-  margin-top: 20px;
-  background-color: #900;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
+  background-color: #fb5d56;
 }
+
 #delete-tasks:hover {
-  background-color: #700;
+  background-color: #c31a13;
 }
 hr {
   color: snow;
@@ -252,17 +289,6 @@ hr {
 
 #export-tasks {
   background-color: #e0e0e0;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #export-tasks:hover {
