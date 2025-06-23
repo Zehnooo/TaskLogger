@@ -101,7 +101,7 @@ otherInput.style.display = 'flex';
 // END custom request function
 
 // BEGIN 'Submit' Start Task Button
-form.addEventListener('submit', function (e) {
+form.addEventListener('start-btn', function (e) {
     e.preventDefault();
 
     if (taskDepartmentInput.value === "default" || selectedCategoryInput.value === "default"){
@@ -317,6 +317,59 @@ manualSubmitBtn.classList.remove('hidden');
 
 function manualSubmission(){
 
+let taskLength = manualTimeSpent.value;
+let taskName = taskNameInput.value.trim();
+let taskDesc = taskDescInput.value.trim();
+let taskDepartment = taskDepartmentInput.value.trim();
+let taskCategory = selectedCategoryInput.value.trim();
+let otherOption = otherInput.value.trim();
+const currentDate = manualDate.value;
+const currentTime = manualTime.value;
+
+let taskData = {
+        name: taskName,
+        desc: taskDesc,
+        department: taskDepartment,
+        category: taskCategory,
+        other: otherOption,
+        length: taskLength,
+        date: currentDate,
+        time: currentTime
+    };
+
+var newTask = document.createElement('li');
+    newTask.classList.add('task-item');
+
+if (taskCategory === "Other" && otherOption.length > 0) {
+        newTask.innerHTML = 
+            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
+            "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
+    } else {
+        newTask.innerHTML = 
+             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
+            "<span class='listTitle'> Category: </span><span class='listVar'>" + taskCategory + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
+    }
+
+taskNameInput.value = "";
+taskDescInput.value = "";
+taskDepartmentInput.selectedIndex = 0;
+selectedCategoryInput.selectedIndex = 0;
+otherInput.value = "";
+
+taskLog.prepend(newTask);
+allTasks.push(taskData);
+saveAllTasks();
+    
+form.style.display = '';
+otherInput.style.display = 'none';
 
 manualEntry =  false;
 
@@ -332,6 +385,8 @@ manualTimeSpent.classList.add('hidden');
 manualTimeSpentLabel.classList.add('hidden');
 
 manualSubmitBtn.classList.add('hidden');
+
+hideLogElements();
 }
 
 manualBtn.addEventListener("click", manualEntryForm);
