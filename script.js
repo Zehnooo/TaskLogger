@@ -257,9 +257,12 @@ function deleteTasks(){
 }
 
 clearButton.addEventListener('click', function(){
-deleteTasks();
-loadAllTasks();
-hideLogElements();
+    const confirmed = confirm("Are you sure you want to delete all tasks?");
+    if (confirmed){
+        deleteTasks();
+        loadAllTasks();
+        hideLogElements();
+    }
 });
 // END Delete Tasks
 
