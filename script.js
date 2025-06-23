@@ -312,18 +312,18 @@ function manualEntryForm(){
     
 manualEntry =  true;
 
-startBtn.classList.add('hidden');
+startBtn.classList.toggle('hidden');
 
-manualDate.classList.remove('hidden');
-manualDateLabel.classList.remove('hidden');
+manualDate.classList.toggle('hidden');
+manualDateLabel.classList.toggle('hidden');
 
-manualTime.classList.remove('hidden');
-manualTimeLabel.classList.remove('hidden');
+manualTime.classList.toggle('hidden');
+manualTimeLabel.classList.toggle('hidden');
 
-manualTimeSpent.classList.remove('hidden');
-manualTimeSpentLabel.classList.remove('hidden');
+manualTimeSpent.classList.toggle('hidden');
+manualTimeSpentLabel.classList.toggle('hidden');
 
-manualSubmitBtn.classList.remove('hidden');
+manualSubmitBtn.classList.toggle('hidden');
 }
 
 function manualSubmission(){
