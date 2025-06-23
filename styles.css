@@ -285,4 +285,9 @@ hr {
   fill: #1a1a1a;                         
   pointer-events: none;
 }
+
+.manual-entry {
+  display:flex;
+  justify-content: flex-end;
+}
 /* END STYLING */

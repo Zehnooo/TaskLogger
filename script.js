@@ -69,6 +69,7 @@ let startBtn = document.getElementById('start-btn');
 let stopButton = document.getElementById('stop-task');
 let clearButton = document.getElementById('delete-tasks');
 let exportBtn = document.getElementById('export-tasks');
+let manualBtn = document.getElementById('manual-entry');
 // END inputs
 
 // BEGIN grab elements
