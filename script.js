@@ -95,6 +95,9 @@ let elapsedTime = document.getElementById('task-time');
 let logCover = document.getElementById('log-cover');
 // END grab elements
 
+const refreshBtn = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C14.5006 4 16.7332 5.14727 18.2002 6.94416M19.9381 11C19.979 11.3276 20 11.6613 20 12C20 16.4183 16.4183 20 12 20C9.61061 20 7.46589 18.9525 6 17.2916M9 17H6V17.2916M18.2002 4V6.94416M18.2002 6.94416V6.99993L15.2002 7M6 20V17.2916" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>';
+refreshBtn.id = 'refresh-btn';
+
 // BEGIN custom request function
 function customInputShow(){
 console.log(selectedCategoryInput.value);
@@ -150,6 +153,7 @@ stopButton.addEventListener('click', function () {
     const currentTime = now.toLocaleTimeString();
 
     let taskData = {
+        id: crypto.randomUUID(),
         name: taskName,
         desc: taskDesc,
         department: taskDepartment,
@@ -165,7 +169,7 @@ stopButton.addEventListener('click', function () {
 
    if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
-            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+            "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><div>" + refreshBtn + "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -173,7 +177,7 @@ stopButton.addEventListener('click', function () {
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
         newTask.innerHTML = 
-             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><hr>" +
+             "<div class='date-time'><span>" + currentDate + "</span>" + '|' + "<span>" + currentTime + "</span></div><div>" + refreshBtn + "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -225,6 +229,7 @@ function loadAllTasks() {
             
             var newTask = document.createElement('li');
             newTask.classList.add('task-item');
+            newTask.setAttribute('data-task-id', taskData.id);
 
             if (taskData.other) {
                 newTask.innerHTML = 
@@ -366,6 +371,7 @@ const currentTime = rawTime.toLocaleTimeString('en-US', {
 });
 
 let taskData = {
+        id: crypto.randomUUID(),
         name: taskName,
         desc: taskDesc,
         department: taskDepartment,
@@ -377,7 +383,8 @@ let taskData = {
     };
 
 var newTask = document.createElement('li');
-    newTask.classList.add('task-item');
+newTask.setAttribute('data-task-id', taskData.id);
+newTask.classList.add('task-item');
 
 if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 

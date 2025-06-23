@@ -188,6 +188,10 @@ select:focus {
   display: flex;
 }
 
+#refresh-btn {
+  height:24px;
+  width:24px;
+}
 
 #active-task {
   background-color: #eee;
