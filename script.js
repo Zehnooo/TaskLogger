@@ -2,6 +2,7 @@
 let form = document.getElementById('task-form');
 let allTasks = [];
 let deletedTasks = [];
+let manualEntry = false;
 
 // START Timer Functions
 let hour = 0o0;
@@ -297,6 +298,9 @@ function exportTasks(){
 
 // BEGIN Manual Entry
 function manualEntryForm(){
+    
+manualEntry =  true;
+
 startBtn.classList.add('hidden');
 
 manualDate.classList.remove('hidden');
@@ -311,4 +315,24 @@ manualTimeSpentLabel.classList.remove('hidden');
 manualSubmitBtn.classList.remove('hidden');
 }
 
+function manualSubmission(){
+
+
+manualEntry =  false;
+
+startBtn.classList.remove('hidden');
+
+manualDate.classList.add('hidden');
+manualDateLabel.classList.add('hidden');
+
+manualTime.classList.add('hidden');
+manualTimeLabel.classList.add('hidden');
+
+manualTimeSpent.classList.add('hidden');
+manualTimeSpentLabel.classList.add('hidden');
+
+manualSubmitBtn.classList.add('hidden');
+}
+
 manualBtn.addEventListener("click", manualEntryForm);
+manualSubmitBtn.addEventListener("click", manualSubmission);
