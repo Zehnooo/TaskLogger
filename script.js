@@ -4,6 +4,12 @@ let allTasks = [];
 let deletedTasks = [];
 let manualEntry = false;
 
+form.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault();
+  }
+});
+
 // START Timer Functions
 let hour = 0o0;
 let minute = 0o0;
@@ -101,8 +107,13 @@ otherInput.style.display = 'flex';
 // END custom request function
 
 // BEGIN 'Submit' Start Task Button
-form.addEventListener('start-btn', function (e) {
+form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+     if (e.submitter && e.submitter.id === 'manual-submit') {
+        manualSubmission();
+        return;
+    }
 
     if (taskDepartmentInput.value === "default" || selectedCategoryInput.value === "default"){
     alert("Department and/or Category cannot be empty. Please try again.");
@@ -323,8 +334,22 @@ let taskDesc = taskDescInput.value.trim();
 let taskDepartment = taskDepartmentInput.value.trim();
 let taskCategory = selectedCategoryInput.value.trim();
 let otherOption = otherInput.value.trim();
-const currentDate = manualDate.value;
-const currentTime = manualTime.value;
+
+const [year, month, day] = manualDate.value.split('-');
+const currentDate = `${parseInt(month)}/${parseInt(day)}/${year.slice(2)}`;
+
+const [hours, minutes] = manualTime.value.split(':');
+const rawTime = new Date();
+rawTime.setHours(parseInt(hours));
+rawTime.setMinutes(parseInt(minutes));
+rawTime.setSeconds(0);
+
+const currentTime = rawTime.toLocaleTimeString('en-US', {
+  hour: 'numeric',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: true
+});
 
 let taskData = {
         name: taskName,
@@ -363,6 +388,9 @@ taskDescInput.value = "";
 taskDepartmentInput.selectedIndex = 0;
 selectedCategoryInput.selectedIndex = 0;
 otherInput.value = "";
+manualDate.value = "";
+manualTime.value = "";
+manualTimeSpent.value = "";
 
 taskLog.prepend(newTask);
 allTasks.push(taskData);
