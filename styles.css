@@ -286,8 +286,18 @@ hr {
   pointer-events: none;
 }
 
-.manual-entry {
+.manual-entry-container {
   display:flex;
   justify-content: flex-end;
+}
+
+.manual-entry-container button {
+  background: transparent;
+  border:none;
+  transition: transform ease .4s;
+}
+
+.manual-entry-container button:hover {
+  transform: scale(1.2);
 }
 /* END STYLING */
