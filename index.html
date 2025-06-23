@@ -78,10 +78,13 @@
           <button type="submit" id="start-btn">Start Task</button>
         </div>
 
+        <label for="manual-date" class="hidden" id="manual-date-label">Date</label>
         <input type="date" class="hidden task-input" id="manual-date">
+        <label for="manual-time" class="hidden" id="manual-time-label">Time</label>
         <input type="time" class="hidden task-input" id="manual-time">
-        <input type="text" class="hidden task-input" id="manual-time-spent">
-       
+        <label for="manual-time-spent" class="hidden" id="manual-time-spent-label">Time Spent </label>
+        <input type="text" class="hidden task-input" id="manual-time-spent" placeholder="00:00:00:00">
+        <div class="form-actions"> <button type="submit" id="manual-submit" class="hidden">Submit</button></div>
       </form>
 
       <div id="active-task" class="hidden">

@@ -73,6 +73,10 @@ let manualBtn = document.getElementById('manual-entry');
 let manualDate = document.getElementById('manual-date');
 let manualTime = document.getElementById('manual-time');
 let manualTimeSpent = document.getElementById('manual-time-spent');
+let manualDateLabel = document.getElementById('manual-date-label');
+let manualTimeLabel = document.getElementById('manual-time-label');
+let manualTimeSpentLabel = document.getElementById('manual-time-spent-label');
+let manualSubmitBtn = document.getElementById('manual-submit');
 // END inputs
 
 // BEGIN grab elements
@@ -292,14 +296,19 @@ function exportTasks(){
 // END CSV Export
 
 // BEGIN Manual Entry
-manualBtn.addEventListener("click", function(){
+function manualEntryForm(){
 startBtn.classList.add('hidden');
 
 manualDate.classList.remove('hidden');
-manualTime.classList.remove('hidden');
-manualTimeSpent.classList.remove('hidden');
+manualDateLabel.classList.remove('hidden');
 
-const submitBtn = document.createElement("button");
-submitBtn.textContent = 'Submit';
-document.body.appendChild(submitBtn);
-});
+manualTime.classList.remove('hidden');
+manualTimeLabel.classList.remove('hidden');
+
+manualTimeSpent.classList.remove('hidden');
+manualTimeSpentLabel.classList.remove('hidden');
+
+manualSubmitBtn.classList.remove('hidden');
+}
+
+manualBtn.addEventListener("click", manualEntryForm);
