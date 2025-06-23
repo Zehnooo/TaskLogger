@@ -277,6 +277,13 @@ if (allTasks.length === 0 ){
 }
 // END Hide ELements
 
+// Stop commas from breaking csv
+function escapeCSVField(field) {
+  if (field == null) return '';
+  // Convert to string and escape inner quotes
+  const str = String(field).replace(/"/g, '""');
+  return `"${str}"`;
+}
 // BEGIN CSV Export
 exportBtn.addEventListener("click", exportTasks);
 function exportTasks(){
@@ -293,7 +300,7 @@ function exportTasks(){
             taskData.department,
             taskData.category,
             taskData.length
-        ].join(",");
+        ].map(escapeCSVField).join(",");
 
         csvContent += row + "\n";
     });
