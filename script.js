@@ -73,10 +73,11 @@ let exportBtn = document.getElementById('export-tasks');
 
 // BEGIN grab elements
 let activeTaskContainer = document.getElementById('active-task');
-let activeTaskElement = document.getElementById('current-task-name');
+let activeTaskElement = document.getElementById('active-task-name');
 let taskLog = document.getElementById('task-log');
 let taskLogTitle = document.getElementById('task-log-title');
 let elapsedTime = document.getElementById('task-time');
+
 // END grab elements
 
 // BEGIN custom request function
@@ -107,6 +108,7 @@ form.addEventListener('submit', function (e) {
     
     form.style.display = 'none';
     activeTaskContainer.classList.remove('hidden');
+    activeTaskElement.textContent = taskNameInput.value.trim();
     startBtn.classList.add('hidden');
     timer = true;
     stopWatch();
