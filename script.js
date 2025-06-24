@@ -428,6 +428,9 @@ manualTimeSpent.value = "";
 newTask.querySelector('.date-time')
 .appendChild(createRefreshBtn(taskData.id));
 
+newTask.querySelector('.date-time')
+.appendChild(createDeleteBtn(taskData.id));
+
 taskLog.prepend(newTask);
 allTasks.push(taskData);
 saveAllTasks();
