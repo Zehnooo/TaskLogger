@@ -164,6 +164,7 @@ stopButton.addEventListener('click', function () {
 
     var newTask = document.createElement('li');
     newTask.classList.add('task-item');
+    newTask.setAttribute('data-task-id', taskData.id);
 
    if (taskCategory === "Other" && otherOption.length > 0) {
         newTask.innerHTML = 
