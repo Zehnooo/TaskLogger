@@ -100,9 +100,12 @@ h1 {
 }
 .form-group label {
   flex: 0 0 150px;
+  
+}
+label {
+  color:#9a8e8e;
   font-weight: bold;
 }
-
 .form-group input,
 .form-group select,
 #other-input, .task-input {
