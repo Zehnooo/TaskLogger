@@ -126,7 +126,8 @@ form.addEventListener('submit', function (e) {
         return;
     }
     }
-    
+    clearFormBtn.style.display = 'none';
+    manualBtn.style.display = 'none';
     form.style.display = 'none';
     activeTaskContainer.classList.remove('hidden');
     activeTaskElement.textContent = taskNameInput.value.trim();
@@ -199,6 +200,9 @@ stopButton.addEventListener('click', function () {
     taskDepartmentInput.selectedIndex = 0;
     selectedCategoryInput.selectedIndex = 0;
     otherInput.value = "";
+
+    clearFormBtn.style.display = '';
+    manualBtn.style.display = '';
 
     newTask.querySelector('.date-time')
     .appendChild(createRefreshBtn(taskData.id));
