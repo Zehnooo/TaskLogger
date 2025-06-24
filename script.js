@@ -84,6 +84,7 @@ let manualDateLabel = document.getElementById('manual-date-label');
 let manualTimeLabel = document.getElementById('manual-time-label');
 let manualTimeSpentLabel = document.getElementById('manual-time-spent-label');
 let manualSubmitBtn = document.getElementById('manual-submit');
+let clearFormBtn = document.getElementById('reset-form');
 // END inputs
 
 // BEGIN grab elements
@@ -496,3 +497,7 @@ function refreshData(id){
    
 
 }
+
+clearFormBtn.addEventListener("click", function(){
+ form.reset();
+});

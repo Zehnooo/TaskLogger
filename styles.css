@@ -245,7 +245,7 @@ select:focus {
   background-color: #e0e0e0;
   border: 1px solid #ccc;
   border-radius: 12px;
-  padding: 0; /* Remove padding so SVG fills the box evenly */
+  padding: 0; 
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -310,6 +310,8 @@ hr {
 .manual-entry-container {
   display:flex;
   justify-content: flex-end;
+  gap:10px;
+  flex: 1;
 }
 
 .manual-entry-container button {
