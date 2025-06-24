@@ -480,8 +480,6 @@ function refreshData(id){
         return;
     }
 
-    console.log(task.department);
-
     if (task.category === "Other") {
         taskNameInput.value = task.name;
         taskDescInput.value = task.desc;
