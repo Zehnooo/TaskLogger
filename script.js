@@ -466,5 +466,35 @@ function createRefreshBtn(taskId) {
             stroke="#fff" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
+
+    btn.addEventListener("click", () => refreshData(taskId));
     return btn;
+}
+
+function refreshData(id){
+    console.log(id);
+    const task = allTasks.find(t => t.id === id);
+
+    if (!task) {
+        console.log("No task found");
+        return;
+    }
+
+    console.log(task.department);
+
+    if (task.category === "Other") {
+        taskNameInput.value = task.name;
+        taskDescInput.value = task.desc;
+        taskDepartmentInput.value = task.department;
+        otherInput.value = task.other;
+        selectedCategoryInput.selectedIndex = 6;
+        customInputShow();
+    } else {
+        taskNameInput.value = task.name;
+        taskDescInput.value = task.desc;
+        taskDepartmentInput.value = task.department;
+        selectedCategoryInput.value = task.category;
+    }
+   
+
 }
