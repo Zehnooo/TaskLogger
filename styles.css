@@ -323,4 +323,23 @@ hr {
 .manual-entry-container button:hover {
   transform: scale(1.2);
 }
+
+.delete-btn {
+  height: 36px;
+  width: 36px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #fff;
+  pointer-events: none;
+}
 /* END STYLING */

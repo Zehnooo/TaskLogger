@@ -201,6 +201,10 @@ stopButton.addEventListener('click', function () {
 
     newTask.querySelector('.date-time')
     .appendChild(createRefreshBtn(taskData.id));
+
+    newTask.querySelector('.date-time')
+    .appendChild(createDeleteBtn(taskData.id));
+
     taskLog.prepend(newTask);
     allTasks.push(taskData);
     saveAllTasks();
@@ -216,6 +220,7 @@ stopButton.addEventListener('click', function () {
 // BEGIN Save Tasks
 function saveAllTasks(){
     localStorage.setItem("tasks", JSON.stringify(allTasks));
+    localStorage.setItem("deleted-tasks", JSON.stringify(deletedTasks));
 }
 // END Save Tasks
 
@@ -246,6 +251,10 @@ function loadAllTasks() {
             }
             newTask.querySelector('.date-time')
             .appendChild(createRefreshBtn(taskData.id));
+
+            newTask.querySelector('.date-time')
+            .appendChild(createDeleteBtn(taskData.id));
+
             taskLog.prepend(newTask);
         });
     }
@@ -501,3 +510,50 @@ function refreshData(id){
 clearFormBtn.addEventListener("click", function(){
  form.reset();
 });
+
+function createDeleteBtn(taskId) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'delete-btn';
+    btn.dataset.taskId = taskId;
+
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20.5 6H3.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M18.83 8.5L18.37 15.4C18.2 18.05 18.11 19.38 17.24 20.19C16.38 21 15.05 21 12.39 21H11.61C8.95 21 7.62 21 6.76 20.19C5.89 19.38 5.8 18.05 5.63 15.4L5.17 8.5"
+        stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M9.5 11L10 16" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14.5 11L14 16" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M6.5 6C6.56 6 6.58 6 6.61 6C7.43 5.98 8.16 5.45 8.44 4.68L8.57 4.29C8.65 4.04 8.7 3.91 8.75 3.81C8.97 3.39 9.38 3.09 9.84 3.02C9.96 3 10.09 3 10.36 3H13.64C13.91 3 14.04 3 14.16 3.02C14.62 3.09 15.03 3.39 15.25 3.81C15.3 3.91 15.35 4.04 15.43 4.29L15.53 4.58C15.84 5.45 16.57 5.98 17.39 6C17.42 6 17.44 6 17.5 6"
+        stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>`
+
+
+    btn.addEventListener("click", () => deleteTaskLine(taskId));
+    return btn;
+}
+
+function deleteTaskLine(id){
+    const confirmed = confirm('Are you sure you want to delete this task?');
+
+    if (confirmed){
+         const task = allTasks.find(t => t.id === id);
+
+     if (!task || task === undefined) {
+        console.log("No task found");
+        return;
+    }
+
+    allTasks = allTasks.filter(t => t.id !== id);
+    saveAllTasks();
+
+    const taskElement = document.querySelector(`[data-task-id="${id}"]`);
+    if (taskElement){
+        taskElement.remove();
+    }
+    hideLogElements();
+    } else {
+        return;
+    }
+    
+   
+}
