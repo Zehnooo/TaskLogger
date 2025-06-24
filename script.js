@@ -475,7 +475,7 @@ function refreshData(id){
     console.log(id);
     const task = allTasks.find(t => t.id === id);
 
-    if (!task) {
+    if (!task || task === undefined) {
         console.log("No task found");
         return;
     }
