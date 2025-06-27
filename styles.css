@@ -262,13 +262,13 @@ select:focus {
 }
 
 .listTitle {
-  color: limegreen;
+  color: var(--form-colors);
   font-weight: bold;
   margin-right: 4px;
 }
 
 .listVar {
-  color: #eee;
+  color: var(--text);
 }
 
 .task-item {
@@ -288,12 +288,9 @@ select:focus {
 .date-time {
   color: yellow;
   font-weight: bold;
-  margin-bottom: 5px;
-  padding: 10px;
   display: flex;
   gap: 20px;
   text-align: center;
-  justify-content: space-between;
   align-items: center;
 }
 
