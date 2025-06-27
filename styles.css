@@ -148,8 +148,10 @@ table {
   --text: #e0e1ddff;
 }
 
-html {
-  padding: 50px;
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -159,14 +161,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
   margin: 0 auto;
   width: 100%;
 }
 
 .container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -269,11 +272,14 @@ select:focus {
 }
 
 .task-item {
-  background-color: #1c1c1c;
+  background-color: var(--secondary);
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 0;
   color: #eee;
-  padding: 15px 20px;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -331,7 +337,6 @@ select:focus {
   align-items: center;
   justify-content: center;
   height: max-content;
-  min-width: 500px;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
@@ -394,13 +399,23 @@ select:focus {
 }
 
 #task-log {
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 8px;
   width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--form-colors);
 }
 
 .icon-btn {
   width: 60px;
   height: 60px;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 0;
   cursor: pointer;
@@ -506,8 +521,9 @@ hr {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 900px;
   margin: 20px auto;
-  padding: 30px;
+  padding: 15px;
   border-radius: 8px;
 }
 
