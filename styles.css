@@ -222,7 +222,7 @@ label {
   flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--accent);
   border-radius: 5px;
 }
 
@@ -238,7 +238,7 @@ label {
 #task-form button {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--accent);
   min-width: 180px;
 }
 
@@ -250,7 +250,7 @@ select:focus {
 
 #task-form button {
   background-color: #239b56;
-  color: white;
+  color: var(--text);
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-radius: 50%;
@@ -324,7 +324,7 @@ select:focus {
 }
 
 .refresh-btn:hover svg path {
-  stroke: #239b56;
+  stroke: var(--good-alert);
 }
 
 .refresh-btn:hover {
@@ -382,26 +382,15 @@ select:focus {
   width: 200px;
   border-radius: 50%;
   background-color: crimson;
-  color: white;
-  border: none;
+  color: var(--text);
   cursor: pointer;
   font-size: 16px;
+  border: 1px solid var(--accent);
 }
 
 #stop-task:hover {
   background-color: darkred;
   animation: breathe 1s ease-in-out infinite;
-}
-
-.log-buttons {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto;
 }
 
 #task-log {
@@ -421,23 +410,18 @@ select:focus {
 .icon-btn {
   width: 60px;
   height: 60px;
-  border: 2px solid var(--accent);
+  border: none;
   border-radius: 12px;
   padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform ease 0.4s;
 }
 
 .icon-btn:hover {
-  transform: scale(1.05);
-}
-
-.icon-btn:active {
-  transform: scale(0.97);
+  transform: scale(1.2);
 }
 
 .icon-btn svg {
@@ -456,7 +440,7 @@ select:focus {
 }
 
 hr {
-  color: snow;
+  border-color: var(--form-colors);
   width: 90%;
 }
 
@@ -468,38 +452,28 @@ hr {
   background-color: #d5d5d5;
 }
 
-#export-tasks:focus {
-  outline: 2px solid #444;
-  outline-offset: 2px;
-}
-
 #export-tasks svg {
   width: 28px;
   height: 28px;
-  fill: #1a1a1a;
   pointer-events: none;
 }
 
-.manual-entry-container {
+.manual-entry-container,
+.log-buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 25px;
   flex: 1;
-  width: 100%;
+  width: max-content;
+  margin: 15px auto;
 }
 
 .manual-entry-container button {
   background: var(--secondary);
-  border: none;
-  transition: transform ease 0.4s;
-}
-
-.manual-entry-container button:hover {
-  transform: scale(1.2);
 }
 
 .manual-entry-container button:hover svg path {
-  fill: white;
+  fill: var(--text);
 }
 
 .delete-btn {
