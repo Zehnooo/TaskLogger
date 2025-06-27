@@ -92,7 +92,95 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -106,8 +194,22 @@ menu,
 nav,
 section {
   display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
 body {
+  line-height: 1;
   line-height: 1;
 }
 ol,
@@ -125,7 +227,10 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
+  border-collapse: collapse;
+  border-spacing: 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -135,7 +240,9 @@ table {
 /* BEGIN STYLING */
 html {
   padding: 50px;
+  padding: 50px;
 }
+
 body {
   font-family: "Roboto", sans-serif;
   background: #f9f9f9;
@@ -147,12 +254,18 @@ body {
   margin: 0 auto;
   width: 100%;
 }
+
 .container {
   width: 100%;
   min-width: 500px;
   max-width: 1000px;
 }
+
 h1 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -162,6 +275,7 @@ h1 {
 }
 
 .hidden {
+  display: none;
   display: none;
 }
 
@@ -173,21 +287,28 @@ h1 {
   max-width: 600px;
   margin: 0 auto;
 }
+
 .form-group {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
 }
+
 .form-group label {
   flex: 0 0 150px;
 }
+
 label {
+  color: #9a8e8e;
   color: #9a8e8e;
   font-weight: bold;
 }
+
 .form-group input,
 .form-group select,
+#other-input,
+.task-input {
 #other-input,
 .task-input {
   flex: 1;
@@ -198,6 +319,7 @@ label {
 }
 
 .form-actions {
+  text-align: center;
   text-align: center;
   margin-top: 10px;
 }
@@ -225,11 +347,13 @@ select:focus {
   transition: background-color 0.2s ease;
   border-radius: 50%;
   height: 200px;
+  height: 200px;
   width: 200px;
 }
 
 #task-form button:hover {
   background-color: #186a3b;
+  animation: breathe 1s ease-in-out infinite;
 }
 
 .listTitle {
@@ -240,6 +364,7 @@ select:focus {
 
 .listVar {
   color: #eee;
+  color: #eee;
 }
 
 .task-item {
@@ -248,15 +373,22 @@ select:focus {
   padding: 15px 20px;
   border-radius: 10px;
   margin-bottom: 15px;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  gap: 10px;
 }
+
 .date-time {
+  color: yellow;
   color: yellow;
   font-weight: bold;
   margin-bottom: 5px;
+  margin-bottom: 5px;
   padding: 10px;
+  display: flex;
+  gap: 20px;
   display: flex;
   gap: 20px;
   text-align: center;
@@ -272,6 +404,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   padding: 5px;
+  padding: 5px;
 }
 .top-line,
 .bot-line,
@@ -283,8 +416,17 @@ select:focus {
 .refresh-btn {
   height: 36px;
   width: 36px;
+  height: 36px;
+  width: 36px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.refresh-btn:hover svg path {
+  stroke: #239b56;
+  animation: breathe 1s ease-in-out infinite;
+
 }
 
 #active-task {
@@ -295,7 +437,7 @@ select:focus {
   text-align: center;
   align-items: center;
   justify-content: center;
-  height: 275px;
+  height: max-content;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
@@ -303,6 +445,7 @@ select:focus {
 #stop-task {
   margin-top: 10px;
   padding: 10px 20px;
+  height: 200px;
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -312,8 +455,10 @@ select:focus {
   cursor: pointer;
   font-size: 16px;
 }
+
 #stop-task:hover {
   background-color: darkred;
+  animation: breathe 1s ease-in-out infinite;
 }
 
 .log-buttons {
@@ -328,12 +473,13 @@ select:focus {
 #task-log {
   width: 100%;
 }
+
 .icon-btn {
   width: 60px;
   height: 60px;
-  background-color: #e0e0e0;
   border: 1px solid #ccc;
   border-radius: 12px;
+  padding: 0;
   padding: 0;
   cursor: pointer;
   display: flex;
@@ -344,7 +490,6 @@ select:focus {
 }
 
 .icon-btn:hover {
-  background-color: #d5d5d5;
   transform: scale(1.05);
 }
 
@@ -366,6 +511,7 @@ select:focus {
 #delete-tasks:hover {
   background-color: #c31a13;
 }
+
 hr {
   color: snow;
   width: 90%;
@@ -393,12 +539,15 @@ hr {
   width: 28px;
   height: 28px;
   fill: #1a1a1a;
+  fill: #1a1a1a;
   pointer-events: none;
 }
 
 .manual-entry-container {
   display: flex;
+  display: flex;
   justify-content: flex-end;
+  gap: 10px;
   gap: 10px;
   flex: 1;
 }
@@ -431,4 +580,34 @@ hr {
   stroke: #fff;
   pointer-events: none;
 }
+
+.delete-btn:hover svg path {
+  stroke: #c31a13;
+  animation: breathe 1s ease-in-out infinite;
+}
+
+.filters {
+  display: flex;
+  width: 100%;
+  margin: 10px;
+  max-width: 450px;
+}
+
+.filters label,
+.filters input {
+  padding: 15px;
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
 /* END STYLING */

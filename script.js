@@ -558,6 +558,7 @@ manualBtn.addEventListener("click", manualEntryForm);
 manualSubmitBtn.addEventListener("click", manualSubmission);
 // END Manual Entry
 
+// BEGIN Reuse data
 function createRefreshBtn(taskId) {
   const btn = document.createElement("button");
   btn.type = "button";
@@ -606,11 +607,14 @@ function refreshData(id) {
     selectedCategoryInput.value = task.category;
   }
 }
+// END Reuse data
 
 clearFormBtn.addEventListener("click", function () {
   form.reset();
 });
+// END Reset form
 
+// BEGIN create delete button
 function createDeleteBtn(taskId) {
   const btn = document.createElement("button");
   btn.type = "button";
@@ -630,6 +634,7 @@ function createDeleteBtn(taskId) {
   btn.addEventListener("click", () => deleteTaskLine(taskId));
   return btn;
 }
+// END create delete button
 
 function deleteTaskLine(id) {
   const confirmed = confirm("Are you sure you want to delete this task?");
