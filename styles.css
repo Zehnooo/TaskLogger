@@ -498,6 +498,10 @@ hr {
   transform: scale(1.2);
 }
 
+.manual-entry-container button:hover svg path {
+  fill: white;
+}
+
 .delete-btn {
   height: 36px;
   width: 36px;
