@@ -139,14 +139,23 @@ table {
 /* CSS RESET END */
 
 /* BEGIN STYLING */
+
+:root {
+  --background: #0d1b2aff;
+  --form-colors: #1b263bff;
+  --accent: #415a77ff;
+  --secondary: #778da9ff;
+  --text: #e0e1ddff;
+}
+
 html {
   padding: 50px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background: #f9f9f9;
-  color: #222;
+  background: var(--background);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,8 +166,7 @@ body {
 
 .container {
   width: 100%;
-  min-width: 500px;
-  max-width: 1000px;
+  max-width: 900px;
 }
 
 h1 {
@@ -179,8 +187,11 @@ h1 {
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
+  background: #1b263b;
+  padding: 25px;
+  border-radius: 8px;
 }
 
 .form-group {
@@ -195,7 +206,7 @@ h1 {
 }
 
 label {
-  color: #9a8e8e;
+  color: #e0e1dd;
   font-weight: bold;
 }
 
@@ -213,6 +224,7 @@ label {
 .form-actions {
   text-align: center;
   margin-top: 10px;
+  width: 100%;
 }
 
 .task-input,
@@ -348,7 +360,7 @@ select:focus {
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: #cfccc8;
+  background-color: #929292;
   margin: 10px auto;
 }
 
@@ -372,11 +384,13 @@ select:focus {
 
 .log-buttons {
   display: flex;
+  width: 100%;
   flex-direction: row;
   height: 100px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
+  margin: 0 auto;
 }
 
 #task-log {
@@ -386,7 +400,7 @@ select:focus {
 .icon-btn {
   width: 60px;
   height: 60px;
-  border: 1px solid #ccc;
+  border: 2px solid var(--secondary);
   border-radius: 12px;
   padding: 0;
   cursor: pointer;
@@ -431,11 +445,6 @@ hr {
 
 #export-tasks:hover {
   background-color: #d5d5d5;
-  transform: scale(1.05);
-}
-
-#export-tasks:active {
-  transform: scale(0.97);
 }
 
 #export-tasks:focus {
@@ -455,6 +464,7 @@ hr {
   justify-content: flex-end;
   gap: 10px;
   flex: 1;
+  width: 100%;
 }
 
 .manual-entry-container button {
@@ -492,15 +502,32 @@ hr {
 }
 
 .filters {
+  background: var(--form-colors);
   display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 10px;
-  max-width: 450px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.filters-input {
+  display: flex;
 }
 
 .filters label,
 .filters input {
   padding: 15px;
+}
+
+.filters h3 {
+  padding: 10px;
+  margin: 5px auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
 @keyframes breathe {
