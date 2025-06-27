@@ -244,6 +244,7 @@ select:focus {
 
 #task-form button:hover {
   background-color: #186a3b;
+  animation: breathe 1s ease-in-out infinite;
 }
 
 .listTitle {
@@ -302,6 +303,13 @@ select:focus {
   width: 36px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.refresh-btn:hover svg path {
+  stroke: #239b56;
+  animation: breathe 1s ease-in-out infinite;
+
 }
 
 #active-task {
@@ -330,6 +338,7 @@ select:focus {
 #task-time {
   color: #44a184;
   display: flex;
+  font-weight: 700;
 }
 
 .div-one,
@@ -356,6 +365,7 @@ select:focus {
 
 #stop-task:hover {
   background-color: darkred;
+  animation: breathe 1s ease-in-out infinite;
 }
 
 .log-buttons {
@@ -374,7 +384,6 @@ select:focus {
 .icon-btn {
   width: 60px;
   height: 60px;
-  background-color: #e0e0e0;
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 0;
@@ -387,7 +396,6 @@ select:focus {
 }
 
 .icon-btn:hover {
-  background-color: #d5d5d5;
   transform: scale(1.05);
 }
 
@@ -476,6 +484,11 @@ hr {
   pointer-events: none;
 }
 
+.delete-btn:hover svg path {
+  stroke: #c31a13;
+  animation: breathe 1s ease-in-out infinite;
+}
+
 .filters {
   display: flex;
   width: 100%;
@@ -486,6 +499,18 @@ hr {
 .filters label,
 .filters input {
   padding: 15px;
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
 }
 
 /* END STYLING */
