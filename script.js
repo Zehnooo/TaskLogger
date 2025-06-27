@@ -238,32 +238,8 @@ function loadAllTasks() {
     if (stored) {
         allTasks = JSON.parse(stored);
         allTasks.forEach(taskData => {
-
-            var newTask = document.createElement('li');
-
-            newTask.classList.add('task-item');
-            newTask.setAttribute('data-task-id', taskData.id);
-
-            if (taskData.other) {
-                newTask.innerHTML =
-                    "<div class='date-time'><span>" + taskData.date + "</span>" + "<span>" + taskData.time + "</span>" + "</div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
-                    "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
-                    "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
-                    "</span><span class='listTitle'> Category (Other): </span><span class='listVar'>" + taskData.other + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
-            } else {
-                newTask.innerHTML =
-                    "<div class='date-time'><span>" + taskData.date + "</span>" + "<span>" + taskData.time + "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
-                    "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
-                    "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
-                    "</span><span class='listTitle'> Category: </span><span class='listVar'>" + taskData.category + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
-            }
-            newTask.querySelector('.date-time')
-                .appendChild(createRefreshBtn(taskData.id));
-
-            newTask.querySelector('.date-time')
-                .appendChild(createDeleteBtn(taskData.id));
-
-            taskLog.prepend(newTask);
+            const taskElement = createTaskElement(taskData);
+            taskLog.prepend(taskElement);
         });
     }
     hideLogElements();
