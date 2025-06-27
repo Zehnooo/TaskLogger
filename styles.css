@@ -179,8 +179,13 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
-  margin: 20px;
-  margin-bottom: 30px;
+  padding: 15px;
+}
+
+.main-title {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .hidden {
@@ -193,7 +198,7 @@ h1 {
   gap: 15px;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 25px auto;
   background: #1b263b;
   padding: 25px;
   border-radius: 8px;
@@ -465,7 +470,7 @@ hr {
   gap: 25px;
   flex: 1;
   width: max-content;
-  margin: 15px auto;
+  margin: 10px auto;
 }
 
 .manual-entry-container button {
