@@ -290,6 +290,11 @@ select:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: transform ease 0.4s;
+}
+
+.task-item:hover {
+  transform: scale(1.01);
 }
 
 .date-time {
@@ -299,6 +304,7 @@ select:focus {
   gap: 20px;
   text-align: center;
   align-items: center;
+  transition: transform ease 0.4s;
 }
 
 .top-line,
@@ -318,6 +324,14 @@ select:focus {
 .time-spent {
   gap: 10px 20px;
   display: flex;
+  transition: transform ease 0.4s;
+}
+
+.top-line:hover,
+.bot-line:hover,
+.time-spent:hover,
+.date-time:hover {
+  transform: scale(1.2);
 }
 
 .refresh-btn {
