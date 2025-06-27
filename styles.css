@@ -303,6 +303,7 @@ select:focus {
   justify-content: center;
   align-items: center;
   padding: 5px;
+  font-size: 18px;
 }
 
 .top-line,
@@ -313,8 +314,8 @@ select:focus {
 }
 
 .refresh-btn {
-  height: 36px;
-  width: 36px;
+  height: 40px;
+  width: 40px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -505,8 +506,8 @@ hr {
 }
 
 .delete-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   stroke: #fff;
   pointer-events: none;
 }
