@@ -312,10 +312,33 @@ select:focus {
   text-align: center;
   align-items: center;
   justify-content: center;
-  height: 275px;
+  height: max-content;
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+}
+
+#active-task p {
+  padding: 5px;
+}
+
+#active-task-name {
+  font-weight: 700;
+  color: rgb(49, 81, 150);
+}
+
+#task-time {
+  color: #44a184;
+  display: flex;
+}
+
+.div-one,
+.div-two {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #stop-task {

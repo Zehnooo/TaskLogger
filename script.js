@@ -131,7 +131,7 @@ form.addEventListener('submit', function (e) {
     manualBtn.style.display = 'none';
     form.style.display = 'none';
     activeTaskContainer.classList.remove('hidden');
-    activeTaskElement.textContent = taskNameInput.value.trim();
+    activeTaskElement.textContent = taskNameInput.value.toUpperCase().trim();
     startBtn.classList.add('hidden');
     timer = true;
     stopWatch();

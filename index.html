@@ -101,11 +101,16 @@
       </form>
 
       <div id="active-task" class="hidden">
-        <p><strong>Current Task: </strong><span id='active-task-name'></span></p>
-        <p><strong>Elapsed Time:</strong>
-        <div id="task-time"><span id="hr" class="hours">00</span>:<span id="min" class="minutes">00</span>:<span
-            id="sec" class="seconds">00</span>:<span id="count" class="msec">00</span></div>
-        </p>
+        <div class="div-one">
+          <p>Current Task: <span id='active-task-name'></span></p>
+        </div>
+        <div class="div-two">
+          <p>Elapsed Time:
+          <div id="task-time"><span id="hr" class="hours">00</span>:<span id="min" class="minutes">00</span>:<span
+              id="sec" class="seconds">00</span>:<span id="count" class="msec">00</span></div>
+          </p>
+        </div>
+
         <button id="stop-task">End Task</button>
       </div>
 
