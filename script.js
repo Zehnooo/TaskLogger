@@ -570,7 +570,16 @@ taskNameFilter.addEventListener("input", () => {
             taskLog.prepend(taskElement);
         });
 
-        hideLogElements();
+        if (filteredTasks.length === 0) {
+            exportBtn.style.display = 'none';
+            clearButton.style.display = 'none';
+            taskLogTitle.style.display = 'none';
+        } else {
+            exportBtn.style.display = '';
+            clearButton.style.display = '';
+            taskLogTitle.style.display = '';
+        }
+
     } else if (!filter) {
         taskLog.innerHTML = "";
         loadAllTasks();
