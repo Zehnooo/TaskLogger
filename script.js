@@ -85,6 +85,7 @@ let manualTimeLabel = document.getElementById('manual-time-label');
 let manualTimeSpentLabel = document.getElementById('manual-time-spent-label');
 let manualSubmitBtn = document.getElementById('manual-submit');
 let clearFormBtn = document.getElementById('reset-form');
+let taskNameFilter = document.getElementById('task-name-filter');
 // END inputs
 
 // BEGIN grab elements
@@ -232,12 +233,14 @@ function saveAllTasks() {
 // BEGIN Load Tasks
 function loadAllTasks() {
     allTasks = [];
+
     const stored = localStorage.getItem("tasks");
     if (stored) {
         allTasks = JSON.parse(stored);
         allTasks.forEach(taskData => {
 
             var newTask = document.createElement('li');
+
             newTask.classList.add('task-item');
             newTask.setAttribute('data-task-id', taskData.id);
 
@@ -489,6 +492,7 @@ function createRefreshBtn(taskId) {
     return btn;
 }
 
+// BEGIN Reuse data 
 function refreshData(id) {
     console.log(id);
     const task = allTasks.find(t => t.id === id);
@@ -514,10 +518,13 @@ function refreshData(id) {
 
 
 }
+// END Reuse data 
 
+// BEGIN reset form 
 clearFormBtn.addEventListener("click", function () {
     form.reset();
 });
+// END Reset form
 
 // BEGIN create delete button
 function createDeleteBtn(taskId) {
@@ -540,7 +547,7 @@ function createDeleteBtn(taskId) {
     btn.addEventListener("click", () => deleteTaskLine(taskId));
     return btn;
 }
-// EBD create delete button
+// END create delete button
 
 // BEGIN Task delete by line
 function deleteTaskLine(id) {
@@ -569,3 +576,73 @@ function deleteTaskLine(id) {
 
 }
 // END Task delete by line
+
+// BEGIN Task filter
+taskNameFilter.addEventListener("input", () => {
+    const filter = taskNameFilter.value.trim();
+    console.log(filter);
+
+    if (filter.length > 0) {
+        let filteredTasks = allTasks.filter(t => {
+            return t.name.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filteredTasks);
+        taskLog.innerHTML = "";
+
+        filteredTasks.forEach(taskData => {
+            const taskElement = createTaskElement(taskData);
+            taskLog.prepend(taskElement);
+        });
+
+        hideLogElements();
+    } else if (!filter) {
+        taskLog.innerHTML = "";
+        loadAllTasks();
+    }
+});
+
+function createTaskElement(taskData) {
+
+    const {
+        name,
+        desc,
+        department,
+        category,
+        other,
+        length,
+        date,
+        time,
+        id
+    } = taskData;
+
+    const newTask = document.createElement('li');
+    newTask.classList.add('task-item');
+    newTask.setAttribute('data-task-id', taskData.id);
+
+    if (category === "Other" && other.length > 0) {
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + date + "</span>" + "<span>" + time + "</span></div><div>" + "<hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + name + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + desc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + department + "</span>" +
+            "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + other + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + length + "</span></div>";
+    } else {
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + date + "</span>" + "<span>" + time + "</span></div><div>" + "<hr>" +
+            "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + name + "</span>" +
+            "<span class='listTitle'> Description: </span><span class='listVar'>" + desc + "</span></div>" +
+            "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + department + "</span>" +
+            "<span class='listTitle'> Category: </span><span class='listVar'>" + category + " </span></div>" +
+            "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + length + "</span></div>";
+    }
+
+    newTask.querySelector('.date-time')
+        .appendChild(createRefreshBtn(id));
+
+    newTask.querySelector('.date-time')
+        .appendChild(createDeleteBtn(id));
+
+    return newTask;
+}
+
