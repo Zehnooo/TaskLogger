@@ -443,6 +443,7 @@ manualBtn.addEventListener("click", manualEntryForm);
 manualSubmitBtn.addEventListener("click", manualSubmission);
 // END Manual Entry
 
+// BEGIN Reuse data 
 function createRefreshBtn(taskId) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -468,7 +469,7 @@ function createRefreshBtn(taskId) {
     return btn;
 }
 
-// BEGIN Reuse data 
+
 function refreshData(id) {
     console.log(id);
     const task = allTasks.find(t => t.id === id);
