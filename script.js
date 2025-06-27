@@ -4,10 +4,10 @@ let allTasks = [];
 let deletedTasks = [];
 let manualEntry = false;
 
-form.addEventListener("keydown", function(e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-  }
+form.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+    }
 });
 
 // START Timer Functions
@@ -16,21 +16,21 @@ let minute = 0o0;
 let second = 0o0;
 let count = 0o0;
 
-function stopWatch(){
-    if (timer){
+function stopWatch() {
+    if (timer) {
         count++;
 
-        if (count == 100){
+        if (count == 100) {
             second++;
             count = 0;
         }
 
-        if (second == 60){
+        if (second == 60) {
             minute++;
             second = 0;
         }
 
-        if (minute == 60){
+        if (minute == 60) {
             hour++;
             second = 0;
             minute = 0;
@@ -97,13 +97,13 @@ let logCover = document.getElementById('log-cover');
 // END grab elements
 
 // BEGIN custom request function
-function customInputShow(){
-console.log(selectedCategoryInput.value);
-if (selectedCategoryInput.value === "Other"){
-otherInput.style.display = 'flex';
-} else {
-    otherInput.style.display = 'none';
-}
+function customInputShow() {
+    console.log(selectedCategoryInput.value);
+    if (selectedCategoryInput.value === "Other") {
+        otherInput.style.display = 'flex';
+    } else {
+        otherInput.style.display = 'none';
+    }
 }
 // END custom request function
 
@@ -111,20 +111,20 @@ otherInput.style.display = 'flex';
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-     if (e.submitter && e.submitter.id === 'manual-submit') {
+    if (e.submitter && e.submitter.id === 'manual-submit') {
         manualSubmission();
         return;
     }
 
-    if (taskDepartmentInput.value === "default" || selectedCategoryInput.value === "default"){
-    alert("Department and/or Category cannot be empty. Please try again.");
-    return;
-}
-    if (selectedCategoryInput.value === "Other"){
-         if (otherInput.value.trim() === ""){
-        alert("Other category cannot be empty. Please try again.");
+    if (taskDepartmentInput.value === "default" || selectedCategoryInput.value === "default") {
+        alert("Department and/or Category cannot be empty. Please try again.");
         return;
     }
+    if (selectedCategoryInput.value === "Other") {
+        if (otherInput.value.trim() === "") {
+            alert("Other category cannot be empty. Please try again.");
+            return;
+        }
     }
     clearFormBtn.style.display = 'none';
     manualBtn.style.display = 'none';
@@ -167,17 +167,17 @@ stopButton.addEventListener('click', function () {
     newTask.classList.add('task-item');
     newTask.setAttribute('data-task-id', taskData.id);
 
-   if (taskCategory === "Other" && otherOption.length > 0) {
-        newTask.innerHTML = 
-            "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><div>" + "<hr>" +
+    if (taskCategory === "Other" && otherOption.length > 0) {
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + currentDate + "</span>" + "<span>" + currentTime + "</span></div><div>" + "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
             "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + " </span></div>" +
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
-        newTask.innerHTML = 
-             "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><div>" +  "<hr>" +
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + currentDate + "</span>" + "<span>" + currentTime + "</span></div><div>" + "<hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -205,15 +205,15 @@ stopButton.addEventListener('click', function () {
     manualBtn.style.display = '';
 
     newTask.querySelector('.date-time')
-    .appendChild(createRefreshBtn(taskData.id));
+        .appendChild(createRefreshBtn(taskData.id));
 
     newTask.querySelector('.date-time')
-    .appendChild(createDeleteBtn(taskData.id));
+        .appendChild(createDeleteBtn(taskData.id));
 
     taskLog.prepend(newTask);
     allTasks.push(taskData);
     saveAllTasks();
-    
+
     form.style.display = '';
     otherInput.style.display = 'none';
     activeTaskContainer.classList.add('hidden');
@@ -223,7 +223,7 @@ stopButton.addEventListener('click', function () {
 // END 'Stop' Stop Task Button
 
 // BEGIN Save Tasks
-function saveAllTasks(){
+function saveAllTasks() {
     localStorage.setItem("tasks", JSON.stringify(allTasks));
     localStorage.setItem("deleted-tasks", JSON.stringify(deletedTasks));
 }
@@ -234,31 +234,31 @@ function loadAllTasks() {
     allTasks = [];
     const stored = localStorage.getItem("tasks");
     if (stored) {
-        allTasks = JSON.parse(stored); 
+        allTasks = JSON.parse(stored);
         allTasks.forEach(taskData => {
-            
+
             var newTask = document.createElement('li');
             newTask.classList.add('task-item');
             newTask.setAttribute('data-task-id', taskData.id);
 
             if (taskData.other) {
-                newTask.innerHTML = 
-                    "<div class='date-time'><span>" + taskData.date + "</span>" +  "<span>" + taskData.time +  "</span>" + "</div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                newTask.innerHTML =
+                    "<div class='date-time'><span>" + taskData.date + "</span>" + "<span>" + taskData.time + "</span>" + "</div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
                     "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
                     "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
                     "</span><span class='listTitle'> Category (Other): </span><span class='listVar'>" + taskData.other + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             } else {
-                newTask.innerHTML = 
-                   "<div class='date-time'><span>" + taskData.date + "</span>" +  "<span>" + taskData.time +  "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
+                newTask.innerHTML =
+                    "<div class='date-time'><span>" + taskData.date + "</span>" + "<span>" + taskData.time + "</span></div><hr><div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskData.name + "</span>" +
                     "<span class='listTitle'> Description: </span><span class='listVar'>" + taskData.desc + "</span></div>" +
                     "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskData.department + "</span>" +
                     "</span><span class='listTitle'> Category: </span><span class='listVar'>" + taskData.category + " </span></div><div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskData.length + "</span></div>";
             }
             newTask.querySelector('.date-time')
-            .appendChild(createRefreshBtn(taskData.id));
+                .appendChild(createRefreshBtn(taskData.id));
 
             newTask.querySelector('.date-time')
-            .appendChild(createDeleteBtn(taskData.id));
+                .appendChild(createDeleteBtn(taskData.id));
 
             taskLog.prepend(newTask);
         });
@@ -270,15 +270,15 @@ loadAllTasks();
 // END Load Tasks
 
 // BEGIN Delete Tasks
-function deleteTasks(){
+function deleteTasks() {
     allTasks = [];
     localStorage.removeItem("tasks");
     taskLog.innerHTML = "";
 }
 
-clearButton.addEventListener('click', function(){
+clearButton.addEventListener('click', function () {
     const confirmed = confirm("Are you sure you want to delete all tasks?");
-    if (confirmed){
+    if (confirmed) {
         deleteTasks();
         loadAllTasks();
         hideLogElements();
@@ -287,29 +287,29 @@ clearButton.addEventListener('click', function(){
 // END Delete Tasks
 
 // BEGIN Hide Elements
-function hideLogElements(){
-if (allTasks.length === 0 ){
-    exportBtn.style.display = 'none';
-    clearButton.style.display = 'none';
-    taskLogTitle.style.display = 'none';
-} else {
-    exportBtn.style.display = ''; 
-    clearButton.style.display = '';
-    taskLogTitle.style.display = '';
-}
+function hideLogElements() {
+    if (allTasks.length === 0) {
+        exportBtn.style.display = 'none';
+        clearButton.style.display = 'none';
+        taskLogTitle.style.display = 'none';
+    } else {
+        exportBtn.style.display = '';
+        clearButton.style.display = '';
+        taskLogTitle.style.display = '';
+    }
 }
 // END Hide ELements
 
 // Stop commas from breaking csv
 function escapeCSVField(field) {
-  if (field == null) return '';
-  // Convert to string and escape inner quotes
-  const str = String(field).replace(/"/g, '""');
-  return `"${str}"`;
+    if (field == null) return '';
+    // Convert to string and escape inner quotes
+    const str = String(field).replace(/"/g, '""');
+    return `"${str}"`;
 }
 // BEGIN CSV Export
 exportBtn.addEventListener("click", exportTasks);
-function exportTasks(){
+function exportTasks() {
     let csvContent = "data:text/csv;charset=utf-8,";
 
     csvContent += "Date,Time,Task,Description,Department,Category,Time Spent\n";
@@ -330,7 +330,7 @@ function exportTasks(){
     const contentReady = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", contentReady);
-    link.setAttribute("download","tasklog.csv");
+    link.setAttribute("download", "tasklog.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -338,55 +338,55 @@ function exportTasks(){
 // END CSV Export
 
 // BEGIN Manual Entry
-function manualEntryForm(){
-    
-manualEntry =  true;
+function manualEntryForm() {
 
-startBtn.classList.toggle('hidden');
+    manualEntry = true;
 
-manualDate.classList.toggle('hidden');
-manualDateLabel.classList.toggle('hidden');
+    startBtn.classList.toggle('hidden');
 
-manualTime.classList.toggle('hidden');
-manualTimeLabel.classList.toggle('hidden');
+    manualDate.classList.toggle('hidden');
+    manualDateLabel.classList.toggle('hidden');
 
-manualTimeSpent.classList.toggle('hidden');
-manualTimeSpentLabel.classList.toggle('hidden');
+    manualTime.classList.toggle('hidden');
+    manualTimeLabel.classList.toggle('hidden');
 
-manualSubmitBtn.classList.toggle('hidden');
+    manualTimeSpent.classList.toggle('hidden');
+    manualTimeSpentLabel.classList.toggle('hidden');
 
-manualDate.value = "";
-manualTime.value = "";
-manualTimeSpent.value = "";
+    manualSubmitBtn.classList.toggle('hidden');
+
+    manualDate.value = "";
+    manualTime.value = "";
+    manualTimeSpent.value = "";
 }
 
 
-function manualSubmission(){
+function manualSubmission() {
 
-let taskLength = manualTimeSpent.value;
-let taskName = taskNameInput.value.trim();
-let taskDesc = taskDescInput.value.trim();
-let taskDepartment = taskDepartmentInput.value.trim();
-let taskCategory = selectedCategoryInput.value.trim();
-let otherOption = otherInput.value.trim();
+    let taskLength = manualTimeSpent.value;
+    let taskName = taskNameInput.value.trim();
+    let taskDesc = taskDescInput.value.trim();
+    let taskDepartment = taskDepartmentInput.value.trim();
+    let taskCategory = selectedCategoryInput.value.trim();
+    let otherOption = otherInput.value.trim();
 
-const [year, month, day] = manualDate.value.split('-');
-const currentDate = `${parseInt(month)}/${parseInt(day)}/${year.slice(2)}`;
+    const [year, month, day] = manualDate.value.split('-');
+    const currentDate = `${parseInt(month)}/${parseInt(day)}/${year.slice(2)}`;
 
-const [hours, minutes] = manualTime.value.split(':');
-const rawTime = new Date();
-rawTime.setHours(parseInt(hours));
-rawTime.setMinutes(parseInt(minutes));
-rawTime.setSeconds(0);
+    const [hours, minutes] = manualTime.value.split(':');
+    const rawTime = new Date();
+    rawTime.setHours(parseInt(hours));
+    rawTime.setMinutes(parseInt(minutes));
+    rawTime.setSeconds(0);
 
-const currentTime = rawTime.toLocaleTimeString('en-US', {
-  hour: 'numeric',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: true
-});
+    const currentTime = rawTime.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    });
 
-let taskData = {
+    let taskData = {
         id: crypto.randomUUID(),
         name: taskName,
         desc: taskDesc,
@@ -398,21 +398,21 @@ let taskData = {
         time: currentTime
     };
 
-var newTask = document.createElement('li');
-newTask.setAttribute('data-task-id', taskData.id);
-newTask.classList.add('task-item');
+    var newTask = document.createElement('li');
+    newTask.setAttribute('data-task-id', taskData.id);
+    newTask.classList.add('task-item');
 
-if (taskCategory === "Other" && otherOption.length > 0) {
-        newTask.innerHTML = 
-            "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><hr>" +
+    if (taskCategory === "Other" && otherOption.length > 0) {
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + currentDate + "</span>" + "<span>" + currentTime + "</span></div><hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
             "<span class='listTitle'> Category (Other): </span><span class='listVar'>" + otherOption + " </span></div>" +
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     } else {
-        newTask.innerHTML = 
-             "<div class='date-time'><span>" + currentDate + "</span>" +  "<span>" + currentTime + "</span></div><hr>" +
+        newTask.innerHTML =
+            "<div class='date-time'><span>" + currentDate + "</span>" + "<span>" + currentTime + "</span></div><hr>" +
             "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" + taskName + "</span>" +
             "<span class='listTitle'> Description: </span><span class='listVar'>" + taskDesc + "</span></div>" +
             "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" + taskDepartment + "</span>" +
@@ -420,44 +420,44 @@ if (taskCategory === "Other" && otherOption.length > 0) {
             "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" + taskLength + "</span></div>";
     }
 
-taskNameInput.value = "";
-taskDescInput.value = "";
-taskDepartmentInput.selectedIndex = 0;
-selectedCategoryInput.selectedIndex = 0;
-otherInput.value = "";
-manualDate.value = "";
-manualTime.value = "";
-manualTimeSpent.value = "";
+    taskNameInput.value = "";
+    taskDescInput.value = "";
+    taskDepartmentInput.selectedIndex = 0;
+    selectedCategoryInput.selectedIndex = 0;
+    otherInput.value = "";
+    manualDate.value = "";
+    manualTime.value = "";
+    manualTimeSpent.value = "";
 
-newTask.querySelector('.date-time')
-.appendChild(createRefreshBtn(taskData.id));
+    newTask.querySelector('.date-time')
+        .appendChild(createRefreshBtn(taskData.id));
 
-newTask.querySelector('.date-time')
-.appendChild(createDeleteBtn(taskData.id));
+    newTask.querySelector('.date-time')
+        .appendChild(createDeleteBtn(taskData.id));
 
-taskLog.prepend(newTask);
-allTasks.push(taskData);
-saveAllTasks();
-    
-form.style.display = '';
-otherInput.style.display = 'none';
+    taskLog.prepend(newTask);
+    allTasks.push(taskData);
+    saveAllTasks();
 
-manualEntry =  false;
+    form.style.display = '';
+    otherInput.style.display = 'none';
 
-startBtn.classList.remove('hidden');
+    manualEntry = false;
 
-manualDate.classList.add('hidden');
-manualDateLabel.classList.add('hidden');
+    startBtn.classList.remove('hidden');
 
-manualTime.classList.add('hidden');
-manualTimeLabel.classList.add('hidden');
+    manualDate.classList.add('hidden');
+    manualDateLabel.classList.add('hidden');
 
-manualTimeSpent.classList.add('hidden');
-manualTimeSpentLabel.classList.add('hidden');
+    manualTime.classList.add('hidden');
+    manualTimeLabel.classList.add('hidden');
 
-manualSubmitBtn.classList.add('hidden');
+    manualTimeSpent.classList.add('hidden');
+    manualTimeSpentLabel.classList.add('hidden');
 
-hideLogElements();
+    manualSubmitBtn.classList.add('hidden');
+
+    hideLogElements();
 }
 
 manualBtn.addEventListener("click", manualEntryForm);
@@ -489,7 +489,7 @@ function createRefreshBtn(taskId) {
     return btn;
 }
 
-function refreshData(id){
+function refreshData(id) {
     console.log(id);
     const task = allTasks.find(t => t.id === id);
 
@@ -511,14 +511,15 @@ function refreshData(id){
         taskDepartmentInput.value = task.department;
         selectedCategoryInput.value = task.category;
     }
-   
+
 
 }
 
-clearFormBtn.addEventListener("click", function(){
- form.reset();
+clearFormBtn.addEventListener("click", function () {
+    form.reset();
 });
 
+// BEGIN create delete button
 function createDeleteBtn(taskId) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -539,29 +540,32 @@ function createDeleteBtn(taskId) {
     btn.addEventListener("click", () => deleteTaskLine(taskId));
     return btn;
 }
+// EBD create delete button
 
-function deleteTaskLine(id){
+// BEGIN Task delete by line
+function deleteTaskLine(id) {
     const confirmed = confirm('Are you sure you want to delete this task?');
 
-    if (confirmed){
-         const task = allTasks.find(t => t.id === id);
+    if (confirmed) {
+        const task = allTasks.find(t => t.id === id);
 
-     if (!task || task === undefined) {
-        console.log("No task found");
-        return;
-    }
+        if (!task || task === undefined) {
+            console.log("No task found");
+            return;
+        }
 
-    allTasks = allTasks.filter(t => t.id !== id);
-    saveAllTasks();
+        allTasks = allTasks.filter(t => t.id !== id);
+        saveAllTasks();
 
-    const taskElement = document.querySelector(`[data-task-id="${id}"]`);
-    if (taskElement){
-        taskElement.remove();
-    }
-    hideLogElements();
+        const taskElement = document.querySelector(`[data-task-id="${id}"]`);
+        if (taskElement) {
+            taskElement.remove();
+        }
+        hideLogElements();
     } else {
         return;
     }
-    
-   
+
+
 }
+// END Task delete by line
