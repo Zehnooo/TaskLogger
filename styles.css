@@ -325,7 +325,10 @@ select:focus {
 
 .refresh-btn:hover svg path {
   stroke: #239b56;
-  animation: breathe 1s ease-in-out infinite;
+}
+
+.refresh-btn:hover {
+  animation: spin 2s ease-in-out infinite;
 }
 
 #active-task {
@@ -513,7 +516,7 @@ hr {
 
 .delete-btn:hover svg path {
   stroke: #c31a13;
-  animation: breathe 1s ease-in-out infinite;
+  animation: blink 1s ease-in-out infinite;
 }
 
 .filters {
@@ -554,6 +557,26 @@ hr {
 
   50% {
     transform: scale(1.03);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 25%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
