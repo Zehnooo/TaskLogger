@@ -92,108 +92,9 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
 article,
 aside,
 details,
@@ -210,16 +111,18 @@ section {
 
 body {
   line-height: 1;
-  line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -231,15 +134,12 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 /* CSS RESET END */
 
 /* BEGIN STYLING */
 html {
-  padding: 50px;
   padding: 50px;
 }
 
@@ -266,16 +166,11 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
   margin: 20px;
   margin-bottom: 30px;
 }
 
 .hidden {
-  display: none;
   display: none;
 }
 
@@ -301,14 +196,11 @@ h1 {
 
 label {
   color: #9a8e8e;
-  color: #9a8e8e;
   font-weight: bold;
 }
 
 .form-group input,
 .form-group select,
-#other-input,
-.task-input {
 #other-input,
 .task-input {
   flex: 1;
@@ -319,7 +211,6 @@ label {
 }
 
 .form-actions {
-  text-align: center;
   text-align: center;
   margin-top: 10px;
 }
@@ -347,7 +238,6 @@ select:focus {
   transition: background-color 0.2s ease;
   border-radius: 50%;
   height: 200px;
-  height: 200px;
   width: 200px;
 }
 
@@ -364,7 +254,6 @@ select:focus {
 
 .listVar {
   color: #eee;
-  color: #eee;
 }
 
 .task-item {
@@ -373,28 +262,23 @@ select:focus {
   padding: 15px 20px;
   border-radius: 10px;
   margin-bottom: 15px;
-  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   gap: 10px;
 }
 
 .date-time {
   color: yellow;
-  color: yellow;
   font-weight: bold;
   margin-bottom: 5px;
-  margin-bottom: 5px;
   padding: 10px;
-  display: flex;
-  gap: 20px;
   display: flex;
   gap: 20px;
   text-align: center;
   justify-content: space-between;
   align-items: center;
 }
+
 .top-line,
 .bot-line,
 .time-spent,
@@ -404,8 +288,8 @@ select:focus {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  padding: 5px;
 }
+
 .top-line,
 .bot-line,
 .time-spent {
@@ -416,8 +300,6 @@ select:focus {
 .refresh-btn {
   height: 36px;
   width: 36px;
-  height: 36px;
-  width: 36px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -426,7 +308,6 @@ select:focus {
 .refresh-btn:hover svg path {
   stroke: #239b56;
   animation: breathe 1s ease-in-out infinite;
-
 }
 
 #active-task {
@@ -442,10 +323,34 @@ select:focus {
   max-width: 500px;
   margin: 0 auto;
 }
+
+#active-task p {
+  padding: 5px;
+}
+
+#active-task-name {
+  font-weight: 700;
+  color: rgb(49, 81, 150);
+}
+
+#task-time {
+  color: #44a184;
+  display: flex;
+  font-weight: 700;
+}
+
+.div-one,
+.div-two {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
 #stop-task {
   margin-top: 10px;
   padding: 10px 20px;
-  height: 200px;
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -479,7 +384,6 @@ select:focus {
   height: 60px;
   border: 1px solid #ccc;
   border-radius: 12px;
-  padding: 0;
   padding: 0;
   cursor: pointer;
   display: flex;
@@ -539,15 +443,12 @@ hr {
   width: 28px;
   height: 28px;
   fill: #1a1a1a;
-  fill: #1a1a1a;
   pointer-events: none;
 }
 
 .manual-entry-container {
   display: flex;
-  display: flex;
   justify-content: flex-end;
-  gap: 10px;
   gap: 10px;
   flex: 1;
 }
@@ -599,7 +500,6 @@ hr {
 }
 
 @keyframes breathe {
-
   0%,
   100% {
     transform: scale(1);
