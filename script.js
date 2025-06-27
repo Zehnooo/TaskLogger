@@ -70,6 +70,7 @@ let taskDescInput = document.getElementById("task-desc");
 let taskDepartmentInput = document.getElementById("task-department");
 let selectedCategoryInput = document.getElementById("task-category");
 let otherInput = document.getElementById("other-input");
+let otherInputLabel = document.getElementById("other-input-label");
 let startBtn = document.getElementById("start-btn");
 let stopButton = document.getElementById("stop-task");
 let clearButton = document.getElementById("delete-tasks");
@@ -100,8 +101,10 @@ function customInputShow() {
   console.log(selectedCategoryInput.value);
   if (selectedCategoryInput.value === "Other") {
     otherInput.style.display = "flex";
+    otherInputLabel.style.display = "flex";
   } else {
     otherInput.style.display = "none";
+    otherInputLabel.style.display = "none";
   }
 }
 // END custom request function
