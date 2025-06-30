@@ -524,10 +524,10 @@ taskNameFilter.addEventListener("input", () => {
       exportBtn.style.display = "";
       clearButton.style.display = "";
       taskLogTitle.style.display = "";
-      taskLog.style.display = "";
     }
   } else if (!filter) {
     taskLog.innerHTML = "";
+    taskLog.style.display = "";
     loadAllTasks();
   }
 });
