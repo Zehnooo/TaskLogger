@@ -331,7 +331,7 @@ select:focus {
 .bot-line:hover,
 .time-spent:hover,
 .date-time:hover {
-  transform: scale(1.2);
+  transform: scale(1.05);
 }
 
 .refresh-btn {
