@@ -438,18 +438,20 @@ select:focus {
 .icon-btn {
   width: 60px;
   height: 60px;
-  border: none;
+  border: 3px solid var(--secondary-bright);
   border-radius: 12px;
   padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform ease 0.4s;
+  transition: background-color 0.2s ease, transform ease 0.4s,
+    border ease-in-out 0.4s;
 }
 
 .icon-btn:hover {
   transform: scale(1.2);
+  border: none;
 }
 
 .icon-btn svg {
@@ -460,11 +462,11 @@ select:focus {
 }
 
 #delete-tasks {
-  background-color: #fb5d56;
+  background-color: var(--secondary);
 }
 
 #delete-tasks:hover {
-  background-color: #c31a13;
+  background-color: red;
 }
 
 hr {
@@ -473,11 +475,11 @@ hr {
 }
 
 #export-tasks {
-  background-color: #e0e0e0;
+  background-color: var(--secondary);
 }
 
 #export-tasks:hover {
-  background-color: #d5d5d5;
+  background-color: silver;
 }
 
 #export-tasks svg {
@@ -500,8 +502,12 @@ hr {
   background: var(--secondary);
 }
 
-.manual-entry-container button:hover svg path {
-  fill: var(--text);
+#reset-form:hover {
+  background: pink;
+}
+
+#manual-entry-button:hover {
+  background: orange;
 }
 
 .delete-btn {
