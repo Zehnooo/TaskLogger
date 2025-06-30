@@ -325,13 +325,22 @@ select:focus {
   gap: 10px 20px;
   display: flex;
   transition: transform ease 0.4s;
+  max-width: 750px;
 }
 
 .top-line:hover,
 .bot-line:hover,
 .time-spent:hover,
 .date-time:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
+}
+
+.task-content {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .refresh-btn {

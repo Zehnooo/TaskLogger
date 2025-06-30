@@ -660,7 +660,7 @@ function createTaskElement(taskData) {
       "</span>" +
       "<span>" +
       time +
-      "</span></div><div>" +
+      "</span></div><div class='task-content'>" +
       "<hr>" +
       "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
       name +
@@ -684,7 +684,7 @@ function createTaskElement(taskData) {
       "</span>" +
       "<span>" +
       time +
-      "</span></div><div>" +
+      "</span></div><div class='task-content'>" +
       "<hr>" +
       "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
       name +
