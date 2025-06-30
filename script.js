@@ -519,10 +519,12 @@ taskNameFilter.addEventListener("input", () => {
       exportBtn.style.display = "none";
       clearButton.style.display = "none";
       taskLogTitle.style.display = "none";
+      taskLog.style.display = "none";
     } else {
       exportBtn.style.display = "";
       clearButton.style.display = "";
       taskLogTitle.style.display = "";
+      taskLog.style.display = "";
     }
   } else if (!filter) {
     taskLog.innerHTML = "";
