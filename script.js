@@ -168,59 +168,11 @@ stopButton.addEventListener("click", function () {
     time: currentTime,
   };
 
-  var newTask = document.createElement("li");
-  newTask.classList.add("task-item");
-  newTask.setAttribute("data-task-id", taskData.id);
+  const newTask = createTaskElement(taskData);
+  taskLog.prepend(newTask);
+  allTasks.push(taskData);
+  saveAllTasks();
 
-  if (taskCategory === "Other" && otherOption.length > 0) {
-    newTask.innerHTML =
-      "<div class='date-time'><span>" +
-      currentDate +
-      "</span>" +
-      "<span>" +
-      currentTime +
-      "</span></div><div>" +
-      "<hr>" +
-      "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
-      taskName +
-      "</span>" +
-      "<span class='listTitle'> Description: </span><span class='listVar'>" +
-      taskDesc +
-      "</span></div>" +
-      "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" +
-      taskDepartment +
-      "</span>" +
-      "<span class='listTitle'> Category (Other): </span><span class='listVar'>" +
-      otherOption +
-      " </span></div>" +
-      "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" +
-      taskLength +
-      "</span></div>";
-  } else {
-    newTask.innerHTML =
-      "<div class='date-time'><span>" +
-      currentDate +
-      "</span>" +
-      "<span>" +
-      currentTime +
-      "</span></div><div>" +
-      "<hr>" +
-      "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
-      taskName +
-      "</span>" +
-      "<span class='listTitle'> Description: </span><span class='listVar'>" +
-      taskDesc +
-      "</span></div>" +
-      "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" +
-      taskDepartment +
-      "</span>" +
-      "<span class='listTitle'> Category: </span><span class='listVar'>" +
-      taskCategory +
-      " </span></div>" +
-      "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" +
-      taskLength +
-      "</span></div>";
-  }
   // Reset Stopwatch
   hour = 0;
   minute = 0;
@@ -240,16 +192,6 @@ stopButton.addEventListener("click", function () {
 
   clearFormBtn.style.display = "";
   manualBtn.style.display = "";
-
-  newTask
-    .querySelector(".date-time")
-    .appendChild(createRefreshBtn(taskData.id));
-
-  newTask.querySelector(".date-time").appendChild(createDeleteBtn(taskData.id));
-
-  taskLog.prepend(newTask);
-  allTasks.push(taskData);
-  saveAllTasks();
 
   form.style.display = "";
   otherInput.style.display = "none";
@@ -412,57 +354,10 @@ function manualSubmission() {
     time: currentTime,
   };
 
-  var newTask = document.createElement("li");
-  newTask.setAttribute("data-task-id", taskData.id);
-  newTask.classList.add("task-item");
-
-  if (taskCategory === "Other" && otherOption.length > 0) {
-    newTask.innerHTML =
-      "<div class='date-time'><span>" +
-      currentDate +
-      "</span>" +
-      "<span>" +
-      currentTime +
-      "</span></div><hr>" +
-      "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
-      taskName +
-      "</span>" +
-      "<span class='listTitle'> Description: </span><span class='listVar'>" +
-      taskDesc +
-      "</span></div>" +
-      "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" +
-      taskDepartment +
-      "</span>" +
-      "<span class='listTitle'> Category (Other): </span><span class='listVar'>" +
-      otherOption +
-      " </span></div>" +
-      "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" +
-      taskLength +
-      "</span></div>";
-  } else {
-    newTask.innerHTML =
-      "<div class='date-time'><span>" +
-      currentDate +
-      "</span>" +
-      "<span>" +
-      currentTime +
-      "</span></div><hr>" +
-      "<div class='top-line'><span class='listTitle'> Task: </span><span class='listVar'>" +
-      taskName +
-      "</span>" +
-      "<span class='listTitle'> Description: </span><span class='listVar'>" +
-      taskDesc +
-      "</span></div>" +
-      "<div class='bot-line'><span class='listTitle'> Department: </span><span class='listVar'>" +
-      taskDepartment +
-      "</span>" +
-      "<span class='listTitle'> Category: </span><span class='listVar'>" +
-      taskCategory +
-      " </span></div>" +
-      "<div class='time-spent'><span class='listTitle'>Time Spent: </span><span class='listVar'>" +
-      taskLength +
-      "</span></div>";
-  }
+  const newTask = createTaskElement(taskData);
+  taskLog.prepend(newTask);
+  allTasks.push(taskData);
+  saveAllTasks();
 
   taskNameInput.value = "";
   taskDescInput.value = "";
@@ -472,16 +367,6 @@ function manualSubmission() {
   manualDate.value = "";
   manualTime.value = "";
   manualTimeSpent.value = "";
-
-  newTask
-    .querySelector(".date-time")
-    .appendChild(createRefreshBtn(taskData.id));
-
-  newTask.querySelector(".date-time").appendChild(createDeleteBtn(taskData.id));
-
-  taskLog.prepend(newTask);
-  allTasks.push(taskData);
-  saveAllTasks();
 
   form.style.display = "";
   otherInput.style.display = "none";
