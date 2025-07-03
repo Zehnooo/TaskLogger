@@ -600,6 +600,8 @@ hr {
   justify-content: space-evenly;
   align-items: center;
   flex-grow: 1;
+  height: 175px;
+  gap: 20px;
 }
 
 .filters-input {
@@ -611,7 +613,6 @@ hr {
 .filters label,
 .filters input {
   padding: 15px;
-  gap: 20px;
 }
 
 .filters h3 {
