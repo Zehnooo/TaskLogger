@@ -257,7 +257,6 @@ input,
 select {
   background: var(--accent);
   color: var(--text);
-  transition: transform 0.4s ease-in-out;
 }
 
 input::placeholder {
@@ -278,6 +277,7 @@ select:open::picker-icon {
 }
 ::picker(select) {
   border: none;
+  background: var(--accent);
 }
 
 option {
@@ -289,10 +289,24 @@ option {
   background: var(--accent);
   padding: 10px;
   transition: 0.4s;
+  font-weight: 600;
+}
+
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
 }
 
 option:nth-of-type(odd) {
   background: var(--secondary);
+}
+
+option:hover span {
+  transform: scale(1.1);
+  filter: brightness(2);
 }
 
 #task-form button {
@@ -583,15 +597,21 @@ hr {
   margin: 20px auto;
   padding: 15px;
   border-radius: 8px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .filters-input {
   display: flex;
+  width: 100%;
+  max-width: 600px;
 }
 
 .filters label,
 .filters input {
   padding: 15px;
+  gap: 20px;
 }
 
 .filters h3 {
