@@ -1,9 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontFamily": "\"JetBrains Mono NL\", \"Fira Code\"",
-  "editor.wordWrap": "bounded",
-  "workbench.colorTheme": "Night Owl",
-  "editor.tabSize": 2,
-  "editor.mouseWheelZoom": true
-}

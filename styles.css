@@ -232,7 +232,7 @@ label {
   flex: 1;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 5px;
 }
 
@@ -248,7 +248,7 @@ label {
 #task-form button {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   min-width: 180px;
 }
 
@@ -256,6 +256,62 @@ input:focus,
 select:focus {
   outline: 2px solid #0073aa;
   box-shadow: 0 0 0 2px #99ccee;
+}
+
+input,
+select {
+  background: var(--accent);
+  color: var(--text);
+}
+
+input::placeholder {
+  color: var(--text);
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+}
+
+select::picker-icon {
+  color: var(--secondary-bright);
+  transition: 0.4s rotate;
+}
+select:open::picker-icon {
+  rotate: 180deg;
+}
+::picker(select) {
+  border: none;
+  background: var(--accent);
+}
+
+option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  color: var(--text);
+  border: 2px solid var(--secondary-bright);
+  background: var(--accent);
+  padding: 10px;
+  transition: 0.4s;
+  font-weight: 600;
+}
+
+option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+option:nth-of-type(odd) {
+  background: var(--secondary);
+}
+
+option:hover span {
+  transform: scale(1.1);
+  filter: brightness(2);
 }
 
 #task-form button {
@@ -330,13 +386,22 @@ select:focus {
   gap: 10px 20px;
   display: flex;
   transition: transform ease 0.4s;
+  max-width: 750px;
 }
 
 .top-line:hover,
 .bot-line:hover,
 .time-spent:hover,
 .date-time:hover {
-  transform: scale(1.2);
+  transform: scale(1.02);
+}
+
+.task-content {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .refresh-btn {
@@ -434,18 +499,20 @@ select:focus {
 .icon-btn {
   width: 60px;
   height: 60px;
-  border: none;
+  border: 3px solid var(--secondary-bright);
   border-radius: 12px;
   padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, transform ease 0.4s;
+  transition: background-color 0.2s ease, transform ease 0.4s,
+    border ease-in-out 0.4s;
 }
 
 .icon-btn:hover {
   transform: scale(1.2);
+  border: none;
 }
 
 .icon-btn svg {
@@ -456,11 +523,11 @@ select:focus {
 }
 
 #delete-tasks {
-  background-color: #fb5d56;
+  background-color: var(--secondary);
 }
 
 #delete-tasks:hover {
-  background-color: #c31a13;
+  background-color: red;
 }
 
 hr {
@@ -469,35 +536,37 @@ hr {
 }
 
 #export-tasks {
-  background-color: #e0e0e0;
+  background-color: var(--secondary);
 }
 
 #export-tasks:hover {
-  background-color: #d5d5d5;
-}
-
-#export-tasks svg {
-  width: 28px;
-  height: 28px;
-  pointer-events: none;
+  background-color: silver;
 }
 
 .manual-entry-container,
 .log-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
+  padding: 20px;
   gap: 25px;
   flex: 1;
-  width: max-content;
+  max-width: 300px;
+  width: 100%;
   margin: 10px auto;
+  height: auto;
+  align-items: center;
 }
 
 .manual-entry-container button {
   background: var(--secondary);
 }
 
-.manual-entry-container button:hover svg path {
-  fill: var(--text);
+#reset-form:hover {
+  background: pink;
+}
+
+#manual-entry-button:hover {
+  background: orange;
 }
 
 .delete-btn {
@@ -533,10 +602,17 @@ hr {
   margin: 20px auto;
   padding: 15px;
   border-radius: 8px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+  height: 175px;
+  gap: 20px;
 }
 
 .filters-input {
   display: flex;
+  width: 100%;
+  max-width: 600px;
 }
 
 .filters label,

@@ -1,2 +1,4 @@
 # ignore folder
 assets/
+.vscode/
+settings.json
