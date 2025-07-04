@@ -1,3 +1,8 @@
+window.addEventListener("load", () => {
+  const website = document.querySelector("body");
+  website.style.opacity = "1";
+});
+
 let form = document.getElementById("task-form");
 let allTasks = [];
 let deletedTasks = [];
