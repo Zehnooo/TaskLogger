@@ -48,12 +48,12 @@
 
         <div class="form-group">
           <label for="task-name">Task</label>
-          <input type="text" id="task-name" placeholder="Enter task name" class="task-input" required />
+          <input type="text" id="task-name" placeholder="Enter task name" class="task-input" autocomplete="off" required/>
         </div>
 
         <div class="form-group">
           <label for="task-desc">Description</label>
-          <input type="text" id="task-desc" placeholder="Enter task description" class="task-input" required />
+          <input type="text" id="task-desc" placeholder="Enter task description" class="task-input" autocomplete="off" required />
         </div>
 
         <div class="form-group">
@@ -85,7 +85,7 @@
         </div>
         <div class="form-group">
           <label for="other-input" class="hidden" id="other-input-label">Other</label>
-          <input type="text" id="other-input" class="hidden task-input" placeholder="Enter other category" /></div>
+          <input type="text" id="other-input" class="hidden task-input" placeholder="Enter other category" autocomplete="off"/></div>
     
         <div class="form-actions">
           <button type="submit" id="start-btn">Start Task</button>
@@ -93,17 +93,17 @@
 
         <div class="form-group">
           <label for="manual-date" class="hidden" id="manual-date-label">Date</label>
-        <input type="date" class="hidden task-input" id="manual-date">
+        <input type="date" class="hidden task-input" id="manual-date" autocomplete="off">
         </div>
 
         <div class="form-group">
           <label for="manual-time" class="hidden" id="manual-time-label">Time</label>
-        <input type="time" class="hidden task-input" id="manual-time">
+        <input type="time" class="hidden task-input" id="manual-time" autocomplete="off">
         </div>
 
         <div class="form-group">
           <label for="manual-time-spent" class="hidden" id="manual-time-spent-label">Time Spent </label>
-        <input type="text" class="hidden task-input" id="manual-time-spent" placeholder="00:00:00:00">
+        <input type="text" class="hidden task-input" id="manual-time-spent" placeholder="00:00:00:00" autocomplete="off">
         </div>
         
         <div class="form-actions"> <button type="submit" id="manual-submit" class="hidden">Submit</button></div>
@@ -153,7 +153,7 @@
         <div class="filters">
           <h3>Filter</h3>
           <div class="filters-input"><label for="task-name-filter">Task</label>
-          <input type="text" id="task-name-filter" class="task-input" placeholder="Filter by task name..."></div>
+          <input type="text" id="task-name-filter" class="task-input" placeholder="Filter by task name..." autocomplete="off"></div>
         </div>
       </div>
     
