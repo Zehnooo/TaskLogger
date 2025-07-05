@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const website = document.querySelector("body");
   website.style.opacity = "1";
 });
